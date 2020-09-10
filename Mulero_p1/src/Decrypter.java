@@ -43,7 +43,9 @@ String decryption(String input){
         /* System.out.println("your new decrypted digits are\n" +
                 " digit1 = "+digit[0] +", digit2 = "+ digit[1] +", digit3 = "+ digit[2] + ", digit4 = "+digit[3]+ "\n");
       */String  FinalStringToReturn =(digit1String+digit2String+digit3String+digit4String);
-        System.out.println(input+" was encrypted to "+FinalStringToReturn); //testing to see if it worked
+     /*   System.out.println(input+" was encrypted to "+FinalStringToReturn);
+         //testing to see if it worked, and is not need for final submitting so comment it out
+       */
         return FinalStringToReturn;
 
     }
