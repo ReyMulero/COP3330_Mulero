@@ -46,7 +46,7 @@ public class Encrypter {
         String digit4String =  Integer.toString(newdigits[3]);
 
         String  FinalStringToReturn =(digit1String+digit2String+digit3String+digit4String);
-         System.out.println(input+ " was converted to " +FinalStringToReturn);// see if it worked
+        System.out.println(input+ " was converted to " +FinalStringToReturn);// see if it worked
         return FinalStringToReturn;
 
     }
