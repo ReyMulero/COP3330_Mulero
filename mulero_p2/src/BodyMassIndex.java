@@ -2,7 +2,7 @@ public class BodyMassIndex {
 
     public double BmiCalculation( double inches , double pounds){
        double Bmi = 0;
-       Bmi =(703 * pounds / Math.pow(inches,2));
+       Bmi =Math.round(703 * pounds / Math.pow(inches,2));
        return Bmi;
     }
     public String BmiCategory(double Bmi){
@@ -10,11 +10,11 @@ public class BodyMassIndex {
         if (Bmi < 18.5){
             bmiCategory= "underweight";
         }
-        else if ((Bmi >=18.5) && (Bmi <= 24.99)){
+        else if ((Bmi >=18.5) && (Bmi <= 24.9)){
             bmiCategory = "normal";
 
         }
-        else if ((Bmi>= 25 )&& (Bmi <= 29.99)){
+        else if ((Bmi>= 25 )&& (Bmi <= 29.9)){
             bmiCategory = "overweight";
         }
         else if (Bmi >= 30) {
