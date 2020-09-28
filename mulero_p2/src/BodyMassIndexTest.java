@@ -12,6 +12,7 @@ class BodyMassIndexTest {
     public void init(){
         e = new BodyMassIndex(hight,weight);
     }
+
     //---------------- bmi calculations----------------
 
     @Test

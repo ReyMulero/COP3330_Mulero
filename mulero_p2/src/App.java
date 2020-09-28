@@ -17,12 +17,11 @@ public class App {
             System.out.println("you enter a invalid response");
             System.out.println("pleas enter a new number and please make sure it is positive");
             Height = in.nextInt();
-            in.nextLine();
+
         }
 
         if (Height > 0){
-            System.out.print("you entered " + Height);
-            in.nextLine();
+            System.out.println("you entered " + Height);
         }
 
         return Height;
@@ -33,7 +32,7 @@ public class App {
 
         System.out.println("Please enter a weight for user in weight in pounds please");
         Weight = in.nextInt();
-        in.nextLine();
+
         while( Weight <0)
         {
             System.out.println("you enter a invalid response");
@@ -42,8 +41,7 @@ public class App {
             in.nextLine();
         }
         if (Weight > 0){
-            System.out.print("you entered " + Weight);
-            in.nextLine();
+            System.out.println("you entered " + Weight);
         }
 
         return Weight;
