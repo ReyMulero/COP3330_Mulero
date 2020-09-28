@@ -14,7 +14,7 @@ public class App {
         Height = in.nextInt();
         in.nextLine();
         while( Height <0) {
-            System.out.println("you enter a negative number");
+            System.out.println("you enter a invalid response");
             System.out.println("pleas enter a new number and please make sure it is positive");
             Height = in.nextInt();
             in.nextLine();
@@ -36,7 +36,7 @@ public class App {
         in.nextLine();
         while( Weight <0)
         {
-            System.out.println("you enter a negative number");
+            System.out.println("you enter a invalid response");
             System.out.println("pleas enter a new number and please make sure it is posative");
             Weight = in.nextInt();
             in.nextLine();
@@ -66,7 +66,7 @@ public class App {
         System.out.println("would you like to enter a new set of measurements for calculations\n" +
                 "type Y for yes or N for no");
         String YesOrNo = in.nextLine();
-        if (YesOrNo.equals("Y")){
+        if (YesOrNo.equalsIgnoreCase("Y")){
             answer = true;
         }
         else {
@@ -75,7 +75,7 @@ public class App {
         return answer;
     }
 
-    private static void displayBmiStatistics(ArrayList<BodyMassIndex> bmiData) {
+    private static void displayBmiStatistics() {
          int count = 0;
          double total = 0;
         for (double score:Scores) {
@@ -100,7 +100,7 @@ public class App {
             displayBmiInfo(bmi);
         }
 
-        displayBmiStatistics(bmiData);
+        displayBmiStatistics();
     }
 
 
