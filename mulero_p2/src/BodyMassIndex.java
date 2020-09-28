@@ -2,8 +2,9 @@ public class BodyMassIndex {
 
     public double BmiCalculation( double inches , double pounds){
        double Bmi = 0;
-       Bmi =Math.round(703 * pounds / Math.pow(inches,2));
-       return Bmi;
+       Bmi = (703 * pounds / Math.pow(inches,2));
+       Bmi = Math.round(Bmi*10.0)/10.0;
+       return (Bmi);
     }
     public String BmiCategory(double Bmi){
         String bmiCategory = "";
@@ -23,7 +24,7 @@ public class BodyMassIndex {
         return bmiCategory;
     }
 
-    BodyMassIndex(double height, double weight){
+   BodyMassIndex(double height, double weight){
         double bmi;
         bmi = BmiCalculation(height, weight);
         BmiCategory(bmi);
