@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class App {
     private static double Height;
     private static double Weight;
-    private static ArrayList<Double> Scores = new ArrayList<Double>();
+    private  static  ArrayList<Double> Scores = new ArrayList<Double>();
 
     private static double getUserHeight() {
         Scanner in = new Scanner(System.in);
@@ -27,7 +27,7 @@ public class App {
         return Height;
     }
 
-    private static double getUserWeight() {
+    private static  double getUserWeight() {
         Scanner in = new Scanner(System.in);
 
         System.out.println("Please enter a weight for user in weight in pounds please");
@@ -92,7 +92,7 @@ public class App {
             double height = getUserHeight();
             double weight = getUserWeight();
 
-            BodyMassIndex bmi = new BodyMassIndex(height, weight);
+            BodyMassIndex bmi = new BodyMassIndex(height,weight);
             bmiData.add(bmi);
             System.out.println();
             displayBmiInfo(bmi);
