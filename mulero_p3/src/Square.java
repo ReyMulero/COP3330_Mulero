@@ -6,8 +6,14 @@ public class Square extends Shape2D {
 
     public Square (double size){
         super(size);
-        name = "Square";
+        name = "square";
         length= size;
+    }
+
+    @Override
+    public String getname() {
+        name = name;
+        return name;
     }
 
     @Override

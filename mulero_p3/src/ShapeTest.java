@@ -3,25 +3,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ShapeTest {
 
-  /* @Test
+   @Test
     public void testSquareName(){
         Shape shape = new Square(10);
         assertEquals("square", shape.getname());
     }
 
-*/
     @Test
     public void testSquareArea(){
         Shape2D shape = new Square(10);
         assertEquals(100, shape.getArea());
     }
-/*
+
     @Test
     public void testSquareArea2(){
         Shape2D shape = new Square(0.5);
         assertEquals(0.25, shape.getArea());
     }
-
+/*
     @Test
     public void testTriangleName(){
         Shape shape = new Triangle(100,100);
