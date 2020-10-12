@@ -64,20 +64,20 @@ public class ShapeTest {
     }
 
     @Test
-    public void testSquareArea(){
-        Shape3D shape = new Square(10);
+    public void testCubeArea(){
+        Shape3D shape = new Cube(10);
         assertEquals(600, shape.getArea());
     }
-/*
+
     @Test
-    public void testSquareArea2(){
-        Shape shape = new Square(0.5);
+    public void testCubeArea2(){
+        Shape shape = new Cube(0.5);
         assertEquals(1.5, shape.getArea());
     }
 
     @Test
     public void testCubeVolume(){
-        Shape shape = new Cube(10);
+        Shape3D shape = new Cube(10);
         assertEquals(1000, shape.getVolume());
     }
 
@@ -146,4 +146,4 @@ public class ShapeTest {
     }
 
 
-}*/
+}
