@@ -1,4 +1,12 @@
 public abstract class Shape {
-    public abstract double getArea(double size);
-    public abstract void getname();
+    private String name;
+    private  Double area;
+
+    public Shape() {
+        name = "";
+        area = 0.0;
+    }
+    public abstract double getArea();
+    public abstract String getname();
+
 }

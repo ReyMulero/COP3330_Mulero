@@ -1,22 +1,18 @@
-class Square extends Shape2D {
+public class Square extends Shape2D {
+    private double length;
     private String name;
     private double area;
-    private double size;
 
-    public Square(double size) {
+
+    public Square (double size){
         super(size);
-        this.size = size;
-    }
-
-
-    @Override
-    public void getname() {
-        this.name =name;
+        name = "Square";
+        length= size;
     }
 
     @Override
-    public int getArea() {
-        area = size*size;
-        return 0;
+    public double getArea() {
+        area = length * length;
+        return area;
     }
 }

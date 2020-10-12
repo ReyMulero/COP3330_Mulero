@@ -1,10 +1,8 @@
+
 public abstract class Shape3D extends Shape2D{
-    public Shape3D(double i) {
-        super(i);
+    public Shape3D(double size) {
+        super(size);
     }
-
-    @Override
-    public void getname() {
-
-    }
+    public abstract String getname();
+    public abstract double getArea();
 }

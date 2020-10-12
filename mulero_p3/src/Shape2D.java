@@ -1,13 +1,16 @@
 public abstract class Shape2D extends Shape{
-
-    public Shape2D(double i) {
-
+    private String name;
+    private double area;
+    public void name(String name){
+        this.name = name;
+    }
+    public Shape2D(double size){
+        name = "";
+        area = 0.0;
     }
 
     @Override
-    public double getArea(double size) {
-      return size;
+    public String getname() {
+        return name;
     }
-
-    public abstract int getArea();
 }
