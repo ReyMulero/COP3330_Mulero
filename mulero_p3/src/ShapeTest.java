@@ -56,7 +56,7 @@ class ShapeTest {
         Shape2D shape = new Circle(0.5);
         assertEquals(0.79, shape.getArea(),0.01);
     }
-/*
+
     @Test
     public void testCubeName(){
         Shape shape = new Cube(100);
@@ -74,7 +74,7 @@ class ShapeTest {
         Shape shape = new Cube(0.5);
         assertEquals(1.5, shape.getArea());
     }
-
+/*
     @Test
     public void testCubeVolume(){
         Shape3D shape = new Cube(10);

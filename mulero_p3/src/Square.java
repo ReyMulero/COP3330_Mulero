@@ -5,7 +5,6 @@ public class Square extends Shape2D {
 
 
     public Square (double size){
-        super();
         name = "square";
         length= size;
     }
