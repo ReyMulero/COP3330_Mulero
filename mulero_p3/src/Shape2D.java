@@ -4,7 +4,7 @@ public abstract class Shape2D extends Shape{
     public void name(String name){
         this.name = name;
     }
-    public Shape2D(double size){
+    public Shape2D(){
         name = "";
         area = 0.0;
     }
@@ -13,4 +13,5 @@ public abstract class Shape2D extends Shape{
     public String getname() {
         return name;
     }
+
 }

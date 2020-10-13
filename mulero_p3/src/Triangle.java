@@ -1,13 +1,13 @@
-public class Square extends Shape2D {
-    private double length;
+public class Triangle extends Shape2D{
+    private double length,Width;
     private String name;
     private double area;
 
-
-    public Square (double size){
+    public Triangle(double size1, double size2){
         super();
-        name = "square";
-        length= size;
+        name = "triangle";
+        length= size1;
+        Width = size2;
     }
 
     @Override
@@ -18,7 +18,8 @@ public class Square extends Shape2D {
 
     @Override
     public double getArea() {
-        area = length * length;
+        area = .5*(length * Width);
         return area;
     }
+
 }
