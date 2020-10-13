@@ -8,6 +8,13 @@ public class Cube extends Shape3D {
     }
 
     @Override
+    public double getVolume() {
+        double volume =length;
+        volume = Math.pow(length, 3);
+        return volume;
+    }
+
+    @Override
     public String getname() {
         return name;
     }
