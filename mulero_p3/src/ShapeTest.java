@@ -113,7 +113,7 @@ class ShapeTest {
 
     @Test
     public void testPyramidVolume2(){
-        Shape3D shape = new Pyramid(1.5,.05,2.5);
+        Shape3D shape = new Pyramid(1.5,0.5,2.5);
         assertEquals(0.63, shape.getVolume(),0.01);
     }
 
@@ -131,7 +131,7 @@ class ShapeTest {
 
     @Test
     public void testSpheeArea2(){
-        Shape3D shape = new Sphere(.075);
+        Shape3D shape = new Sphere(.75);
         assertEquals(7.07, shape.getArea(),0.01);
     }
     @Test
@@ -139,16 +139,13 @@ class ShapeTest {
         Shape3D shape = new Sphere(10);
         assertEquals(4188.79, shape.getVolume(),0.01);
     }
- /*
+
 
     @Test
     public void testSphereVolume2(){
-        Shape3D shape = new Pyramid(0.6);
+        Shape3D shape = new Sphere(0.6);
         assertEquals(0.9, shape.getVolume(),0.1);
     }
-
-*/
-
 
 
 }

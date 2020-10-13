@@ -1,5 +1,5 @@
 public class Pyramid extends Shape3D {
-    private double length,area,width, height;
+    private double length,area = Math.round(.01),width, height;
     private String name;
     public Pyramid(double size1,double size2,double size3){
         super();
@@ -13,7 +13,7 @@ public class Pyramid extends Shape3D {
     @Override
     public double getVolume() {
         double volume =length;
-        volume = (length*width*height)/3;
+        volume = ((length*width*height)/3);
         return volume;
     }
 
@@ -24,8 +24,9 @@ public class Pyramid extends Shape3D {
 
     @Override
     public double getArea() {
-        area = ((length * width) + length) *( Math.sqrt(Math.pow(width / 2, 2) +
+        area = (length * width) + (length * Math.sqrt(Math.pow(width / 2, 2) +
                 Math.pow(height, 2))) + (width * Math.sqrt(Math.pow(length / 2, 2) + Math.pow(height, 2)));
+        area = Math.round(area*100.0)/100.0;
         return area;
     }
 }
