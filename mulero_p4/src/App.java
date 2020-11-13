@@ -9,6 +9,7 @@ private static final Scanner choice = new Scanner(System.in);
         do {
             switch (optionPickFromMainMenu){
                 case 1:
+                    TaskList.CreateTasklist();
                     System.out.println("you have created a new list\n\n");
                     exitLoop = true;
                     TaskList.taskListOptions();
