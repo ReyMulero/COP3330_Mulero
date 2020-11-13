@@ -2,22 +2,31 @@ import java.util.Scanner;
 
 public class App {
     App app = new App();
+    private static final Scanner mainMenuChoice = new Scanner(System.in);
+    private static void getMainMenuChoice(int choice){
+        boolean exitLoop = false;
+        do {
+            switch (choice) {
+                case 1:
+                    TaskList.tasklistOptions();
+                    System.out.println("\nyou have created a new task list\n");
+                    exitLoop = true;
+                    break;
+                case 2:
+                    TaskList.AlreadyCreatedList();
+                    System.out.println("here is a list of your current task list\n");
+                    exitLoop = true;
+                    break;
+                case 3:
+                    System.out.println("Thank for using Task Manger v.1.0 and have a nice day");
+                    System.exit(-1);
 
-    private static int getMainMenuChoice(int choice){
-        switch (choice){
-            case 1:
-                TaskList.tasklistOptions();
-                System.out.println("you have created a new task list\n");
-                break;
-            case 2:
-                TaskList.AlreadyCreatedList();
-                System.out.println("here is a list of your current task list\n");
-                break;
-            default:
-                return-1;
-
-        }
-        return choice;
+                default:
+                    System.out.println("You did not enter a valid choice pleas enter a number from 1-3");
+                    choice = mainMenuChoice.nextInt();
+                    mainMenuChoice.nextLine();
+            }
+        }while(exitLoop == false);
     }
 
 
@@ -48,14 +57,11 @@ public class App {
                            "2) work on an existing list\n" +
                            "3) exit the program\n");
         System.out.println("--------------------------------------------------------");
-        Scanner mainMenuChoice = new Scanner(System.in);
+
         int choice;
         choice = mainMenuChoice.nextInt();
         mainMenuChoice.nextLine();
         getMainMenuChoice(choice);
-        if (choice == 3){
-            System.out.println("Thank for using Task Manger v.1.0 and have a nice day");
-            System.exit(-1);
-        }
+
     }
 }
