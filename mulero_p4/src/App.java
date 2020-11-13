@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class App {
-    App app = new App();
+
     private static final Scanner mainMenuChoice = new Scanner(System.in);
     private static void getMainMenuChoice(int choice){
         boolean exitLoop = false;
@@ -29,8 +29,24 @@ public class App {
         }while(exitLoop == false);
     }
 
+    public static void mainMenu(){
+        System.out.println("---------------------Main Menu---------------------------");
+        System.out.println("Welcome to Task Manger v.1.0 what would you like to do\n");
+        System.out.println("1) create a new list\n"+
+                "2) work on an existing list\n" +
+                "3) exit the program\n");
+        System.out.println("--------------------------------------------------------");
+
+        int choice;
+        choice = mainMenuChoice.nextInt();
+        mainMenuChoice.nextLine();
+        getMainMenuChoice(choice);
+
+    }
 
     public static void main(String[] args) {
+        App app = new App();
+       app.mainMenu();
         /*
         A task list shall contain 0 or more task items
         An task item shall contain a title
@@ -51,17 +67,7 @@ public class App {
         A user shall be able to unmark an item in the current task list as completed
        */
 
-        System.out.println("---------------------Main Menu---------------------------");
-        System.out.println("Welcome to Task Manger v.1.0 what would you like to do\n");
-        System.out.println("1) create a new list\n"+
-                           "2) work on an existing list\n" +
-                           "3) exit the program\n");
-        System.out.println("--------------------------------------------------------");
 
-        int choice;
-        choice = mainMenuChoice.nextInt();
-        mainMenuChoice.nextLine();
-        getMainMenuChoice(choice);
 
     }
 }

@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskList {
+    private ArrayList<tasklist> task = new ArrayList<>();
     // List tasklist = new List();
     public static void tasklistOptions() {
         System.out.println("\n\nPlease pick an option from the list below from the list\n");
@@ -18,4 +20,8 @@ public class TaskList {
 
         }
 
+    private class tasklist {
+        String Title ;
+
     }
+}
