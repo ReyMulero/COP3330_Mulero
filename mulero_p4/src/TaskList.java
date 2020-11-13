@@ -1,7 +1,13 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class TaskList {
     private static final Scanner in = new Scanner(System.in);
+
+    private static void CreateTasklist(){
+        List<tasklist> TaskList = new List<tasklist>();
+
+    }
 
     public static void taskListOptions(){
             int optionpicked;

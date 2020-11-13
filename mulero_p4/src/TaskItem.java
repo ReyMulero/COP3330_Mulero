@@ -2,7 +2,8 @@ import java.util.Scanner;
 
 public class TaskItem {
     private static final Scanner input = new Scanner(System.in);
-
+// next step is to turn this into a singe function that when called
+// reach out to all the function for title date and description
     private static String setTitle(){
         String title;
         title = input.nextLine();
