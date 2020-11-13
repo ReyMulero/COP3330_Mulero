@@ -9,7 +9,7 @@ private static final Scanner choice = new Scanner(System.in);
         do {
             switch (optionPickFromMainMenu){
                 case 1:
-                    System.out.println("you have created a new list");
+                    System.out.println("you have created a new list\n\n");
                     exitLoop = true;
                     TaskList.taskListOptions();
                     // TaskItem.dueDate();
@@ -22,7 +22,7 @@ private static final Scanner choice = new Scanner(System.in);
                     break;
                 case 3:
                     exitLoop = true;
-                    System.out.println("thannk you for using Task Manger v.1.0");
+                    System.out.println("Thank you for using Task Manger v.1.0");
                     System.exit(-1);
                     break;
                 default:
