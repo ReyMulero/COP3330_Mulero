@@ -1,13 +1,12 @@
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TaskList {
+
+
     private static final Scanner in = new Scanner(System.in);
 
-    public static void CreateTasklist(){
-      //  List<tasklist> TaskList = new List<tasklist>();
-
-    }
+    private static ArrayList<String> tasklist = new ArrayList<>();
 
     public static void taskListOptions(){
             int optionpicked;
@@ -34,11 +33,18 @@ public class TaskList {
      private static void TaskToDo(int menuItemPicked){
 
         switch (menuItemPicked){
+            
             case 1:
+                for (String data:tasklist) {
+                    System.out.println(data);
+                }
+                    
+
                 // have the user see what task are in current list
                 break;
             case 2:
-                //have a user create a new item to add to the task list
+             //   System.out.println(TaskItem.CreateNewItem());
+               tasklist.add(TaskItem.CreateNewItem());
                 break;
 
             case 3:
@@ -70,5 +76,6 @@ public class TaskList {
      }
 
 
-    }
+
+}
 
