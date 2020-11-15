@@ -37,8 +37,11 @@ public class TaskList {
 
             case 1:
                 System.out.println("current item in the list");
+                int arrayNumber = 0;
                 for (String data:tasklist) {
-                    System.out.println(data);
+
+                    System.out.println(arrayNumber+") "+data);
+                    arrayNumber++;
                 }
                 System.out.println("--------------------------------------------");
                     
@@ -51,14 +54,28 @@ public class TaskList {
                 break;
 
             case 3:
+                int itemToRemove;
+                System.out.println("-----------------------------");
+                System.out.println("please enter the number that for the slot that you wish to remove from the list ");
+                itemToRemove = in.nextInt();
+                tasklist.remove(itemToRemove);
+                System.out.println("---------------------------");
                 // have the user remove an item from the task list
                 break;
 
             case 4:
-                // have the user edit an item uin the task list
+                int changeListLocation;
+                String newListItemSet;
+                System.out.println("pleas enter the list location you would like to change");
+                changeListLocation = in.nextInt();
+                in.nextLine();
+               newListItemSet = TaskItem.CreateNewItem();
+                    tasklist.set(changeListLocation,newListItemSet);
+                // have the user edit an item in the task list
                 break;
 
             case 5:
+                System.out.println("--------------------------------");
                 //have the user choose to mark an item as completed in the task list
                 break;
 

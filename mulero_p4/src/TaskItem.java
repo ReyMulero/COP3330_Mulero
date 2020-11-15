@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.ArrayList;
+
 
 public class TaskItem {
     private static final Scanner input = new Scanner(System.in);
@@ -13,7 +13,7 @@ public class TaskItem {
         a = title();
         b = description();
         c = dueDate();
-        newItem = a +" "+ b + " " + c;
+        newItem = a +": "+ b + " [" + c+"]";
         return newItem;
     }
 

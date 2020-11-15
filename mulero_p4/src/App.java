@@ -3,8 +3,6 @@ import java.util.Scanner;
 
 public class App {
 
-
-
     public static void getMainMenuChoice(){
 
         int optionPickFromMainMenu;
@@ -46,9 +44,7 @@ public class App {
             //e.printStackTrace();
            mainMenu();
         }
-
         }
-
 
     public static void mainMenu(){
         System.out.println("---------------main menu------------------\n");
@@ -63,12 +59,5 @@ public class App {
     public static void main(String[] args) {
         App app = new App();
         app.mainMenu();
-
-
-
-
     }
-
-
-
 }
