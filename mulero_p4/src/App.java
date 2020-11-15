@@ -1,13 +1,22 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
-private static final Scanner choice = new Scanner(System.in);
 
-    public static void getMainMenuChoice(int mainMenuAnswer){
-        int optionPickFromMainMenu = mainMenuAnswer;
+
+
+    public static void getMainMenuChoice(){
+
+        int optionPickFromMainMenu;
+        Scanner input = new Scanner(System.in);
         boolean exitLoop = false;
-        do {
-            switch (optionPickFromMainMenu){
+        try{
+
+            optionPickFromMainMenu = input.nextInt();
+
+
+            do {
+            switch (optionPickFromMainMenu) {
                 case 1:
                     TaskList.CreateTasklist();
                     System.out.println("you have created a new list\n\n");
@@ -28,12 +37,19 @@ private static final Scanner choice = new Scanner(System.in);
                     break;
                 default:
                     System.out.println("please enter a valid response of a number from 1-3");
-                    optionPickFromMainMenu = choice.nextInt();
-                    choice.nextLine();
-            }
-        }while(!exitLoop);
+                    optionPickFromMainMenu = input.nextInt();
+                    input.nextLine();
 
-    }
+            }
+        } while (!exitLoop);
+        }catch (InputMismatchException e){
+            System.out.println("you enter the illegal value");
+            //e.printStackTrace();
+           mainMenu();
+        }
+
+        }
+
 
     public static void mainMenu(){
         System.out.println("---------------main menu------------------\n");
@@ -42,10 +58,7 @@ private static final Scanner choice = new Scanner(System.in);
                            "3) exit program");
         System.out.println("\n------------------------------------------\n");
         System.out.println("please enter a number from 1-3");
-        int mainMenuChoice;
-        mainMenuChoice = choice.nextInt();
-        choice.nextLine();
-        getMainMenuChoice(mainMenuChoice);
+        getMainMenuChoice();
     }
 
     public static void main(String[] args) {

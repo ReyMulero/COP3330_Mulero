@@ -1,11 +1,11 @@
-import java.util.List;
+
 import java.util.Scanner;
 
 public class TaskList {
     private static final Scanner in = new Scanner(System.in);
 
     public static void CreateTasklist(){
-        List<tasklist> TaskList = new List<tasklist>();
+      //  List<tasklist> TaskList = new List<tasklist>();
 
     }
 
