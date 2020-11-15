@@ -24,6 +24,7 @@ public class TaskList {
                 System.out.println("please select an option from this menu");
                 optionpicked = in.nextInt();
                 in.nextLine();
+                System.out.println("\n------------------------------------");
                 TaskToDo(optionpicked);
 
             }while (optionpicked != 8);
@@ -33,11 +34,13 @@ public class TaskList {
      private static void TaskToDo(int menuItemPicked){
 
         switch (menuItemPicked){
-            
+
             case 1:
+                System.out.println("current item in the list");
                 for (String data:tasklist) {
                     System.out.println(data);
                 }
+                System.out.println("--------------------------------------------");
                     
 
                 // have the user see what task are in current list
