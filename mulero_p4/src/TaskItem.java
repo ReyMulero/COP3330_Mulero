@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -25,7 +26,7 @@ public class TaskItem {
     }
     private static String title(){
         String taskItemName;
-        System.out.println("\n please enter a title for your task you have created");
+        System.out.println("\nplease enter a title for your task you have created");
        taskItemName = setTitle();
         System.out.println(taskItemName + "\n");
        return taskItemName;
@@ -68,6 +69,7 @@ public class TaskItem {
     //A due date shall be in the format of YYYY-MM-DD
 
     public static void createList() throws FileNotFoundException {
-        TaskList.taskListOptions();
+        ArrayList<String> tasklist = new ArrayList<>();
+        TaskList.taskListOptions(tasklist);
     }
 }

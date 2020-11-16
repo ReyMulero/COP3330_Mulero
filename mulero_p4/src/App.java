@@ -5,27 +5,25 @@ import java.util.Scanner;
 public class App {
 
     public static void getMainMenuChoice(){
-
-        int optionPickFromMainMenu;
         Scanner input = new Scanner(System.in);
+        menuOptionPicked(input);
+    }
+
+    private static void menuOptionPicked(Scanner input) {
+        int optionPickFromMainMenu;
         boolean exitLoop = false;
         try{
-
             optionPickFromMainMenu = input.nextInt();
-
-
             do {
             switch (optionPickFromMainMenu) {
                 case 1:
                     System.out.println("you have created a new list\n\n");
                     exitLoop = true;
-                   TaskItem.createList();
-                    // TaskItem.dueDate();
-                    //TaskItem.description();
-                    //TaskItem.title();
+                    TaskItem.createList();
                     break;
                 case 2:
                     System.out.println("you have choose to look at a your previous created list");
+                    TaskList.loadList();
                     exitLoop = true;
                     break;
                 case 3:
@@ -42,15 +40,14 @@ public class App {
         } while (!exitLoop);
         }catch (InputMismatchException | FileNotFoundException e){
             System.out.println("you enter the illegal value");
-            //e.printStackTrace();
            mainMenu();
         }
-        }
+    }
 
     public static void mainMenu(){
         System.out.println("---------------main menu------------------\n");
         System.out.println("1) create a new list\n" +
-                           "2) view created list\n" +
+                           "2) load a created list\n" +
                            "3) exit program");
         System.out.println("\n------------------------------------------\n");
         System.out.println("please enter a number from 1-3");

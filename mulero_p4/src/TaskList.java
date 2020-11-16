@@ -1,122 +1,124 @@
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Scanner;
 
 public class TaskList {
-
-    private static int arrayNumber;
     private static final Scanner in = new Scanner(System.in);
 
     private static ArrayList<String> tasklist = new ArrayList<>();
 
+    public static void loadList() throws FileNotFoundException {
+        String fileName = "";
+        System.out.print("enter the file name you wish to get: ");
+        GrabFile();
+        taskListMenu();
+    }
 
-    public static void taskListOptions() throws FileNotFoundException {
-            int optionpicked;
-            do {
-                System.out.println("---------task list option menu----------");
-                System.out.println("1) view current list\n" +
-                                   "2) add an item\n" +
-                                   "3) remove a task item\n" +
-                                   "4) edit a task item\n"+
-                                   "5) mark item as completed\n" +
-                                   "6) unmark item from completed\n" +
-                                   "7) save the current list\n" +
-                                   "8) quit to the main menu");
-                System.out.println("----------------------------------------\n");
-                System.out.println("please select an option from this menu");
-                optionpicked = in.nextInt();
-                in.nextLine();
-                System.out.println("\n------------------------------------");
-                TaskToDo(optionpicked);
+    private static ArrayList<String> GrabFile() throws FileNotFoundException {
+        String fileName;
+        fileName = in.nextLine();
+        //Paths.get(fileName);
+        ArrayList<String> tempListlocation = new ArrayList<String>();
+        try{
+            File file = new File(fileName);
+            Scanner readFile = new Scanner(file);
+            while(readFile.hasNextLine()){
+                tempListlocation.add(readFile.nextLine());
+                System.out.println(readFile.nextLine());
 
-            }while (optionpicked != 8);
+            }
+        }catch (FileNotFoundException e){
+            System.out.println("-------------\n" +
+                    "file not found please enter a valid file name \n" +
+                    "------------------\n");
+            //e.printStackTrace();
+            loadList();
+        }return tempListlocation;
 
+        /*
+        int line = 0;
+
+        try{
+            Scanner numberOfLineOFText = new Scanner(new File(fileName));
+            while(numberOfLineOFText.hasNextLine()) {
+                line = line + 1;
+                numberOfLineOFText.nextLine();
+            }
+            String[] taskListTxtFile = new String[line];
+            for (int i = 0; i < line; i = i+1){
+                taskListTxtFile[i] = numberOfLineOFText.nextLine();
+            }
+
+            System.out.println("retrieving file: "+fileName);
+
+        }catch (FileNotFoundException e) {
+            System.out.println("file not found");
+            e.printStackTrace();
         }
+        */
+    }
 
-     private static void TaskToDo(int menuItemPicked) throws FileNotFoundException {
+
+    public static void taskListOptions(ArrayList<String> tasklist) throws FileNotFoundException {
+        taskListMenu();
+
+    }
+
+    private static void taskListMenu() throws FileNotFoundException {
+        int optionpicked;
+        do {
+            System.out.println("---------task list option menu----------");
+            System.out.println("1) view current list\n" +
+                               "2) add an item\n" +
+                               "3) remove a task item\n" +
+                               "4) edit a task item\n"+
+                               "5) mark item as completed\n" +
+                               "6) unmark item from completed\n" +
+                               "7) save the current list\n" +
+                               "8) quit to the main menu");
+            System.out.println("----------------------------------------\n");
+            System.out.println("please select an option from this menu");
+            optionpicked = in.nextInt();
+            in.nextLine();
+            System.out.println("\n------------------------------------");
+            TaskToDo(optionpicked);
+
+        }while (optionpicked != 8);
+    }
+
+    private static void TaskToDo(int menuItemPicked) throws FileNotFoundException {
 
         switch (menuItemPicked){
 
             case 1:
-                System.out.println("current item in the list\n");
-                for (String data:tasklist) {
-                    System.out.println(data);
-                }
-                System.out.println("\n--------------------------------------------");
-                    
-
-
+                viewTaskList();
                 break;
             case 2:
-               tasklist.add( arrayNumber +") "+TaskItem.CreateNewItem());
-               arrayNumber++;
+                addItemToList();
                 break;
 
             case 3:
-                int itemToRemove;
-                System.out.println("-----------------------------");
-                System.out.println("please enter the number that for the slot that you wish to remove from the list ");
-                itemToRemove = in.nextInt();
-                tasklist.remove(itemToRemove);
-                System.out.println("---------------------------");
+                RemoveItmeFromList();
 
                 break;
 
             case 4:
-                int changeListLocation;
-                String newListItemSet;
-                System.out.println("pleas enter the list location you would like to change");
-                changeListLocation = in.nextInt();
-                in.nextLine();
-               newListItemSet = TaskItem.CreateNewItem();
-                    tasklist.set(changeListLocation,changeListLocation + ")" + newListItemSet);
-
+                editItemList();
                 break;
 
             case 5:
-                int markAsCompleted;
-                String completionMark = "*****";
-
-                System.out.println("-------uncompleted task-----------");
-                for (String data:tasklist) {
-
-                    if (!data.startsWith("**")){
-                        System.out.println(data);
-                    }
-
-                }
-                System.out.println("--------------------------------------------");
-
-                System.out.println("please choose an item from your list of item by list number to mark as completed");
-                markAsCompleted = in.nextInt();
-                in.nextLine();
-                tasklist.set(markAsCompleted,completionMark + tasklist.get(markAsCompleted));
-
+                markItemAsComplete();
                 break;
 
             case 6:
-                int unmarkFromCompleted;
-                for (String data:tasklist) {
-
-                    if (data.startsWith("**")){
-                        System.out.println(data);
-                    }
-
-                }
-                System.out.println("--------------------------------");
-                System.out.println("please choose an item from your list of item by list number to unmark from completed item");
-                unmarkFromCompleted= in.nextInt();
-                in.nextLine();
-                tasklist.set(unmarkFromCompleted, tasklist.get(unmarkFromCompleted).substring(5));
-
-
+                RemoveCompletionMarkFRomCompletedItem();
                 break;
 
             case 7:
                 writeToFile(tasklist);
-
-                //have the user save the current task list to a text file
                 break;
 
 
@@ -127,11 +129,98 @@ public class TaskList {
         }
      }
 
+    private static void RemoveCompletionMarkFRomCompletedItem() {
+        int unmarkFromCompleted;
+        int i = 0;
+        for (String data:tasklist) {
+
+            if (data.startsWith("**")){
+                System.out.println(i +") "+data);
+
+            }
+            i++;
+        }
+
+        System.out.println("please choose an item from your list of item by list number to unmark from completed item");
+        System.out.println("--------------------------------");
+        unmarkFromCompleted= in.nextInt();
+        in.nextLine();
+        tasklist.set(unmarkFromCompleted, tasklist.get(unmarkFromCompleted).substring(5));
+    }
+
+    private static void markItemAsComplete() {
+        int markAsCompleted;
+        int i = 0;
+        String completionMark = "*****";
+
+        System.out.println("-------uncompleted task-----------");
+        for (String data:tasklist) {
+
+            if (!data.startsWith("**")){
+                System.out.println(i +") "+ data);
+                i++;
+            }
+
+        }
+        System.out.println("--------------------------------------------");
+
+        System.out.println("please choose an item from your list of item by list number to mark as completed");
+        markAsCompleted = in.nextInt();
+        in.nextLine();
+        tasklist.set(markAsCompleted,completionMark + tasklist.get(markAsCompleted));
+    }
+
+    private static void editItemList() {
+        int changeListLocation;
+        int i = 0;
+        String newListItemSet;
+        DisplayList(i);
+        System.out.println("pleas enter the list location you would like to change");
+        System.out.println("----------------------------");
+        changeListLocation = in.nextInt();
+        in.nextLine();
+        newListItemSet = TaskItem.CreateNewItem();
+        tasklist.set(changeListLocation,newListItemSet);
+    }
+
+    private static void RemoveItmeFromList() {
+        int itemToRemove;
+        int i = 0;
+        DisplayList(i);
+        System.out.print("please enter the number that for the slot that you wish to remove from the list: \n");
+        itemToRemove = in.nextInt();
+        tasklist.remove(itemToRemove);
+        System.out.println("---------------------------");
+    }
+
+    private static void addItemToList() {
+        tasklist.add( TaskItem.CreateNewItem());
+    }
+
+    private static void viewTaskList() {
+        int i = 0;
+        System.out.println("current item in the list\n");
+        DisplayList(i);
+        System.out.println("\n--------------------------------------------");
+    }
+
+    private static void DisplayList(int i) {
+        for (String data:tasklist) {
+            System.out.println(i +") " + data);
+            i++;
+
+        }
+    }
+
     private static void writeToFile(ArrayList<String> tasklist){
-        try( Formatter output = new Formatter("listitems.txt")) {
+        String fileName;
+        System.out.print("enter a file name:");
+        fileName = in.nextLine();
+        try( Formatter output = new Formatter(fileName)) {
             for (String data : TaskList.tasklist) {
                 output.format("%s%n", data);
             }
+            System.out.println("file"+fileName + "hase been saved");
         }catch(FileNotFoundException e){
             System.out.println("no file was found");
         }
