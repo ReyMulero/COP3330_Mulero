@@ -1,5 +1,7 @@
 import java.io.FileNotFoundException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 
@@ -51,12 +53,12 @@ public class TaskItem {
 
        String DueDaySet;
        System.out.println("please enter a due date: ");
-
+     DateTimeFormatter formatedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
      DueDaySet = input.nextLine();
 
-
-       System.out.println(DueDaySet + "\n");
+     String Date = DueDaySet.format(String.valueOf(formatedDate));
+       System.out.println(Date + "\n");
        return DueDaySet;
    }
 

@@ -14,6 +14,7 @@ public class App {
         boolean exitLoop = false;
         try{
             optionPickFromMainMenu = input.nextInt();
+            input.nextLine();
             do {
             switch (optionPickFromMainMenu) {
                 case 1:
