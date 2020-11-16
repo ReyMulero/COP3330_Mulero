@@ -1,7 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Paths;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Scanner;
@@ -12,16 +10,16 @@ public class TaskList {
     private static ArrayList<String> tasklist = new ArrayList<>();
 
     public static void loadList() throws FileNotFoundException {
-        String fileName = "";
+        ArrayList<String> listFromTxt = new ArrayList<>();
         System.out.print("enter the file name you wish to get: ");
-        GrabFile();
+       listFromTxt = GrabFile();
+        tasklist = listFromTxt;
         taskListMenu();
     }
 
     private static ArrayList<String> GrabFile() throws FileNotFoundException {
         String fileName;
         fileName = in.nextLine();
-        //Paths.get(fileName);
         ArrayList<String> tempListlocation = new ArrayList<String>();
         try{
             int i = 0;
@@ -30,10 +28,6 @@ public class TaskList {
             while(readFile.hasNextLine()){
                tempListlocation.add(readFile.nextLine());
                 i++;
-            }
-            for (String data: tempListlocation) {
-                System.out.println(data);
-
             }
         }catch (FileNotFoundException e){
             System.out.println("-------------\n" +
@@ -44,7 +38,6 @@ public class TaskList {
         }return tempListlocation;
 
     }
-
 
     public static void taskListOptions(ArrayList<String> tasklist) throws FileNotFoundException {
         taskListMenu();
@@ -160,7 +153,7 @@ public class TaskList {
         String newListItemSet;
         DisplayList(i);
         System.out.println("pleas enter the list location you would like to change");
-        System.out.println("----------------------------");
+        System.out.println("----------------------------\n");
         changeListLocation = in.nextInt();
         in.nextLine();
         newListItemSet = TaskItem.CreateNewItem();
