@@ -51,13 +51,13 @@ public class TaskItem {
 
    private  static String setDueDate(){
 
+
        String DueDaySet;
        System.out.println("please enter a due date: ");
-     DateTimeFormatter formatedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+       DueDaySet = input.nextLine();
+       DateTimeFormatter formatedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-     DueDaySet = input.nextLine();
-
-     String Date = DueDaySet.format(String.valueOf(formatedDate));
+       String Date = DueDaySet.format(String.valueOf(formatedDate));
        System.out.println(Date + "\n");
        return DueDaySet;
    }
