@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.file.Paths;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Scanner;
@@ -23,11 +24,15 @@ public class TaskList {
         //Paths.get(fileName);
         ArrayList<String> tempListlocation = new ArrayList<String>();
         try{
+            int i = 0;
             File file = new File(fileName);
             Scanner readFile = new Scanner(file);
             while(readFile.hasNextLine()){
-                tempListlocation.add(readFile.nextLine());
-                System.out.println(readFile.nextLine());
+               tempListlocation.add(readFile.nextLine());
+                i++;
+            }
+            for (String data: tempListlocation) {
+                System.out.println(data);
 
             }
         }catch (FileNotFoundException e){
@@ -38,27 +43,6 @@ public class TaskList {
             loadList();
         }return tempListlocation;
 
-        /*
-        int line = 0;
-
-        try{
-            Scanner numberOfLineOFText = new Scanner(new File(fileName));
-            while(numberOfLineOFText.hasNextLine()) {
-                line = line + 1;
-                numberOfLineOFText.nextLine();
-            }
-            String[] taskListTxtFile = new String[line];
-            for (int i = 0; i < line; i = i+1){
-                taskListTxtFile[i] = numberOfLineOFText.nextLine();
-            }
-
-            System.out.println("retrieving file: "+fileName);
-
-        }catch (FileNotFoundException e) {
-            System.out.println("file not found");
-            e.printStackTrace();
-        }
-        */
     }
 
 
