@@ -1,10 +1,10 @@
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 
 public class TaskItem {
     private static final Scanner input = new Scanner(System.in);
-    // next step is to turn this into a singe function that when called
-    // reach out to all the function for title date and description
+
     public static String CreateNewItem(){
         String a;
         String b;
@@ -30,8 +30,7 @@ public class TaskItem {
         System.out.println(taskItemName + "\n");
        return taskItemName;
     }
-    // An task item shall contain a title
-    //a title shall be 1 or more characters in length
+
 
     private  static String setDiscription(){
         String description;
@@ -46,21 +45,16 @@ public class TaskItem {
         System.out.println(descript + "\n");
         return descript;
     }
-    //An task item shall contain a description
-    //A description shall be 0 or more characters in length
+
    private  static String setDueDate(){
-        //   int day;
-       // int month;
-        //int year;
+
        String DueDaySet;
        System.out.println("please enter a due date: ");
-         //  year = input.nextInt();
-       //month =input.nextInt();
-       //day = input.nextInt();
+
 
      DueDaySet = input.nextLine();
 
-     //  DueDaySet = year + "-" + month+ "-" + day;
+
        System.out.println(DueDaySet + "\n");
        return DueDaySet;
    }
@@ -71,10 +65,9 @@ public class TaskItem {
         dueDate =  setDueDate();
        return dueDate;
     }
-    //An task item shall contain a due date
     //A due date shall be in the format of YYYY-MM-DD
 
-    public static void createList(){
+    public static void createList() throws FileNotFoundException {
         TaskList.taskListOptions();
     }
 }

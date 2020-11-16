@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -39,7 +40,7 @@ public class App {
 
             }
         } while (!exitLoop);
-        }catch (InputMismatchException e){
+        }catch (InputMismatchException | FileNotFoundException e){
             System.out.println("you enter the illegal value");
             //e.printStackTrace();
            mainMenu();
