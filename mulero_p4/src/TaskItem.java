@@ -1,11 +1,12 @@
 import java.io.FileNotFoundException;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 
 public class TaskItem {
+    private static String CorrectSatDate;
     private static final Scanner input = new Scanner(System.in);
 
     public static String CreateNewItem(){
@@ -50,16 +51,23 @@ public class TaskItem {
     }
 
    private  static String setDueDate(){
+     String DueDaySet;
+       System.out.print("please enter a due date: ");
+        try {
+            DueDaySet = input.nextLine();
 
+            LocalDate date = LocalDate.parse(DueDaySet);
 
-       String DueDaySet;
-       System.out.println("please enter a due date: ");
-       DueDaySet = input.nextLine();
-       DateTimeFormatter formatedDate = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            System.out.println(date + "\n");
+            CorrectSatDate = String.valueOf(date);
+            return CorrectSatDate;
+        }catch (DateTimeParseException e) {
+            System.out.println("date is not in correct format\n");
+            dueDate();
 
-       String Date = DueDaySet.format(String.valueOf(formatedDate));
-       System.out.println(Date + "\n");
-       return DueDaySet;
+        }
+
+        return CorrectSatDate;
    }
 
     private static String dueDate(){
@@ -68,7 +76,6 @@ public class TaskItem {
         dueDate =  setDueDate();
        return dueDate;
     }
-    //A due date shall be in the format of YYYY-MM-DD
 
     public static void createList() throws FileNotFoundException {
         ArrayList<String> tasklist = new ArrayList<>();

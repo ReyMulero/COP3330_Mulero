@@ -10,7 +10,7 @@ public class TaskList {
     private static ArrayList<String> tasklist = new ArrayList<>();
 
     public static void loadList() throws FileNotFoundException {
-        ArrayList<String> listFromTxt = new ArrayList<>();
+        ArrayList<String> listFromTxt;
         System.out.print("enter the file name you wish to get: ");
        listFromTxt = GrabFile();
         tasklist = listFromTxt;
@@ -96,11 +96,13 @@ public class TaskList {
 
             case 7:
                 writeToFile(tasklist);
+
                 break;
 
 
             default:
                 System.out.println("you have decide to go back to the main menu\n\n");
+                tasklist.clear();
                 App.mainMenu();
 
         }
