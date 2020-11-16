@@ -79,12 +79,11 @@ public class TaskList {
 
                 System.out.println("-------uncompleted task-----------");
                 for (String data:tasklist) {
-                    int i = 0;
-                    if (!tasklist.get(i).startsWith("**")){
+
+                    if (!data.startsWith("**")){
                         System.out.println(data);
                     }
-                    i++;
-                    continue;
+
                 }
                 System.out.println("--------------------------------------------");
 
@@ -100,17 +99,18 @@ public class TaskList {
             case 6:
                 int unmarkFromCompleted;
                 for (String data:tasklist) {
-                    int i = 0;
-                    if (tasklist.get(i).startsWith("**")){
+
+                    if (data.startsWith("**")){
                         System.out.println(data);
                     }
-                    i++;
+
                 }
                 System.out.println("--------------------------------");
                 System.out.println("please choose an item from your list of item by list number to unmark from completed item");
                 unmarkFromCompleted= in.nextInt();
                 in.nextLine();
-               
+                tasklist.set(unmarkFromCompleted, tasklist.get(unmarkFromCompleted).substring(5));
+
                 // have the user unmark a item from there completed task list
                 break;
 
