@@ -3,6 +3,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
+class InvalidTitleException extends IllegalArgumentException {
+    public InvalidTitleException(String msg) {
+        super(msg);
+    }
+}
 
 public class TaskItem {
     private static String CorrectSatDate;
@@ -11,10 +16,9 @@ public class TaskItem {
     private static String Description = null;
 
 
-
     private static boolean isTitleValid(String titlevalidation){
-        return Title.length()> 0;
-    }
+       return Title.length()> 0;
+   }
 
     public static String CreateNewItem() {
         String a;
@@ -27,7 +31,7 @@ public class TaskItem {
             c = dueDate();
             newItem = a +": "+ b + " [" + c+"]";
         }catch (InvalidTitleException e){
-            System.out.println("Invalid entry for title dip shit\n");
+            System.out.println("Invalid entry for title \n");
             System.out.println("title must be at least one character long");
             System.out.println("Task list not created \n");
         }
@@ -38,7 +42,7 @@ public class TaskItem {
         Title = input.nextLine();
 
         if(isTitleValid(Title)){
-
+            System.out.println("");
         }else{
            throw new InvalidTitleException("Na man try again you mess up my manz");
         }
@@ -102,9 +106,4 @@ public class TaskItem {
         TaskList.taskListMenu();
     }
 
-}
-class InvalidTitleException extends IllegalArgumentException {
-    public InvalidTitleException(String msg) {
-        super(msg);
-    }
 }

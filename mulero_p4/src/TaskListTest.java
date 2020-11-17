@@ -1,51 +1,52 @@
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+
+
 class TaskListTest {
-    /*@Test
-    addingTaskItemsIncreasesSize(){
-    }
+
     @Test
-    completingTaskItemChangesStatus();
+    public void addingTaskItemsIncreasesSize(){}
     @Test
-    completingTaskItemFailsWithInvalidIndex();
+    public void completingTaskItemChangesStatus(){}
     @Test
-    editingTaskItemChangesValues();
+    public void completingTaskItemFailsWithInvalidIndex(){}
     @Test
-    editingTaskItemDescriptionChangesValue();
+    public void editingTaskItemChangesValues(){}
     @Test
-    editingTaskItemDescriptionFailsWithInvalidIndex();
+    public void editingTaskItemDescriptionChangesValue(){}
     @Test
-    editingTaskItemDueDateChangesValue();
+    public void editingTaskItemDescriptionFailsWithInvalidIndex(){}
     @Test
-    editingTaskItemDueDateFailsWithInvalidIndex();
+    public void editingTaskItemDueDateChangesValue(){}
     @Test
-    editingTaskItemTitleChangesValue();
+    public void editingTaskItemDueDateFailsWithInvalidIndex(){}
     @Test
-    editingTaskItemTitleFailsWithInvalidIndex();
+    public void editingTaskItemTitleChangesValue(){}
     @Test
-    gettingTaskItemDescriptionFailsWithInvalidIndex();
+    public void editingTaskItemTitleFailsWithInvalidIndex(){}
     @Test
-    gettingTaskItemDescriptionSucceedsWithValidIndex();
+    public void gettingTaskItemDescriptionFailsWithInvalidIndex(){}
     @Test
-    gettingTaskItemDueDateFailsWithInvalidIndex();
+    public void gettingTaskItemDescriptionSucceedsWithValidIndex(){}
     @Test
-    gettingTaskItemDueDateSucceedsWithValidIndex();
+    public void gettingTaskItemDueDateFailsWithInvalidIndex(){}
     @Test
-    gettingTaskItemTitleFailsWithInvalidIndex();
+    public void gettingTaskItemDueDateSucceedsWithValidIndex(){}
     @Test
-    gettingTaskItemTitleSucceedsWithValidIndex();
+    public void gettingTaskItemTitleFailsWithInvalidIndex(){}
     @Test
-    newTaskListIsEmpty();
+    public void gettingTaskItemTitleSucceedsWithValidIndex(){}
     @Test
-    removingTaskItemsDecreasesSize();
+    public void newTaskListIsEmpty(){}
     @Test
-    removingTaskItemsFailsWithInvalidIndex();
+    public void removingTaskItemsDecreasesSize(){}
     @Test
-    savedTaskListCanBeLoaded();
+    public void removingTaskItemsFailsWithInvalidIndex(){}
     @Test
-    uncompletingTaskItemChangesStatus();
+    public void savedTaskListCanBeLoaded(){}
     @Test
-    uncompletingTaskItemFailsWithInvalidIndex();
-*/
+    public void uncompletingTaskItemChangesStatus(){}
+    @Test
+    public void uncompletingTaskItemFailsWithInvalidIndex(){}
+
 }

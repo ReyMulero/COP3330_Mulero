@@ -36,7 +36,6 @@ public class App {
                     System.out.println("please enter a valid response of a number from 1-3");
                     optionPickFromMainMenu = input.nextInt();
                     input.nextLine();
-
             }
         } while (!exitLoop);
         }catch (InputMismatchException | FileNotFoundException e){

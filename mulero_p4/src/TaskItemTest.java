@@ -1,22 +1,25 @@
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TaskItemTest {
- /*   @Test
-    creatingTaskItemFailsWithInvalidDueDate();
     @Test
-    creatingTaskItemFailsWithInvalidTitle();
+   public void creatingTaskItemFailsWithInvalidDueDate(){}
     @Test
-    creatingTaskItemSucceedsWithValidDueDate();
+    public void creatingTaskItemFailsWithInvalidTitle(){}
     @Test
-    creatingTaskItemSucceedsWithValidTitle();
+    public void creatingTaskItemSucceedsWithValidDueDate(){}
     @Test
-    settingTaskItemDueDateFailsWithInvalidDate();
+    public void creatingTaskItemSucceedsWithValidTitle(){}
     @Test
-    settingTaskItemDueDateSucceedsWithValidDate();
+    public void settingTaskItemDueDateFailsWithInvalidDate(){}
     @Test
-    settingTaskItemTitleFailsWithInvalidTitle();
+    public void settingTaskItemDueDateSucceedsWithValidDate(){}
     @Test
-    settingTaskItemTitleSucceedsWithValidTitle();
-*/
+    public void settingTaskItemTitleFailsWithInvalidTitle(){}
+    @Test
+    public void  settingTaskItemTitleSucceedsWithValidTitle(){}
+
 }

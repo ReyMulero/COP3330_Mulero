@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Formatter;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TaskList {
@@ -39,24 +40,31 @@ public class TaskList {
 
     public static void taskListMenu()  {
         int optionpicked;
-        do {
-            System.out.println("---------task list option menu----------");
-            System.out.println("1) view current list\n" +
-                    "2) add an item\n" +
-                    "3) remove a task item\n" +
-                    "4) edit a task item\n"+
-                    "5) mark item as completed\n" +
-                    "6) unmark item from completed\n" +
-                    "7) save the current list\n" +
-                    "8) quit to the main menu");
-            System.out.println("----------------------------------------\n");
-            System.out.println("please select an option from this menu");
-            optionpicked = in.nextInt();
-            in.nextLine();
-            System.out.println("\n------------------------------------");
-            TaskToDo(optionpicked);
+        try {
+            do {
+                System.out.println("---------task list option menu----------");
+                System.out.println("1) view current list\n" +
+                        "2) add an item\n" +
+                        "3) remove a task item\n" +
+                        "4) edit a task item\n" +
+                        "5) mark item as completed\n" +
+                        "6) unmark item from completed\n" +
+                        "7) save the current list\n" +
+                        "8) quit to the main menu");
+                System.out.println("----------------------------------------\n");
+                System.out.println("please select an option from this menu");
+                optionpicked = in.nextInt();
+                in.nextLine();
+                System.out.println("\n------------------------------------");
+                TaskToDo(optionpicked);
 
-        }while (optionpicked != 8);
+            } while (optionpicked != 8);
+        }catch (InputMismatchException e){
+            System.out.println("you enter an invalid response please enter a number from 1-8");
+            in.next();
+            taskListMenu();
+        }
+
     }
 
     private static void TaskToDo(int menuItemPicked)  {
@@ -164,7 +172,7 @@ public class TaskList {
         System.out.println("---------------------------");
     }
 
-    private static void addItemToList()  {
+    public static void addItemToList()  {
         tasklist.add( TaskItem.CreateNewItem());
     }
 
