@@ -12,7 +12,7 @@ public class TaskList {
     public static void loadList() throws FileNotFoundException {
         ArrayList<String> listFromTxt;
         System.out.print("enter the file name you wish to get: ");
-       listFromTxt = GrabFile();
+        listFromTxt = GrabFile();
         tasklist = listFromTxt;
         taskListMenu();
     }
@@ -26,7 +26,7 @@ public class TaskList {
             File file = new File(fileName);
             Scanner readFile = new Scanner(file);
             while(readFile.hasNextLine()){
-               tempListlocation.add(readFile.nextLine());
+                tempListlocation.add(readFile.nextLine());
                 i++;
             }
         }catch (FileNotFoundException e){
@@ -49,13 +49,13 @@ public class TaskList {
         do {
             System.out.println("---------task list option menu----------");
             System.out.println("1) view current list\n" +
-                               "2) add an item\n" +
-                               "3) remove a task item\n" +
-                               "4) edit a task item\n"+
-                               "5) mark item as completed\n" +
-                               "6) unmark item from completed\n" +
-                               "7) save the current list\n" +
-                               "8) quit to the main menu");
+                    "2) add an item\n" +
+                    "3) remove a task item\n" +
+                    "4) edit a task item\n"+
+                    "5) mark item as completed\n" +
+                    "6) unmark item from completed\n" +
+                    "7) save the current list\n" +
+                    "8) quit to the main menu");
             System.out.println("----------------------------------------\n");
             System.out.println("please select an option from this menu");
             optionpicked = in.nextInt();
@@ -106,7 +106,7 @@ public class TaskList {
                 App.mainMenu();
 
         }
-     }
+    }
 
     private static void RemoveCompletionMarkFRomCompletedItem() {
         int unmarkFromCompleted;
@@ -206,4 +206,3 @@ public class TaskList {
     }
 
 }
-

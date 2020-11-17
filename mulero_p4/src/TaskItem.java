@@ -30,9 +30,9 @@ public class TaskItem {
     private static String title(){
         String taskItemName;
         System.out.println("\nplease enter a title for your task you have created");
-       taskItemName = setTitle();
+        taskItemName = setTitle();
         System.out.println(taskItemName + "\n");
-       return taskItemName;
+        return taskItemName;
     }
 
 
@@ -40,7 +40,7 @@ public class TaskItem {
         String description;
         description = input.nextLine();
         return description;
-}
+    }
 
     private  static String description(){
         System.out.println("please enter a description for the task:");
@@ -50,9 +50,9 @@ public class TaskItem {
         return descript;
     }
 
-   private  static String setDueDate(){
-     String DueDaySet;
-       System.out.print("please enter a due date: ");
+    private  static String setDueDate(){
+        String DueDaySet;
+        System.out.print("please enter a due date: ");
         try {
             DueDaySet = input.nextLine();
 
@@ -68,13 +68,13 @@ public class TaskItem {
         }
 
         return CorrectSatDate;
-   }
+    }
 
     private static String dueDate(){
         System.out.println("All new task require a due date(YYYY-MM-DD):");
         String dueDate;
         dueDate =  setDueDate();
-       return dueDate;
+        return dueDate;
     }
 
     public static void createList() throws FileNotFoundException {
