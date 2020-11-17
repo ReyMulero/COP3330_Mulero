@@ -1,45 +1,63 @@
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class TaskItem {
     private static String CorrectSatDate;
     private static final Scanner input = new Scanner(System.in);
+    private static String Title = null;
+    private static String Description = null;
 
-    public static String CreateNewItem(){
+
+
+    private static boolean isTitleValid(String titlevalidation){
+        return Title.length()> 0;
+    }
+
+    public static String CreateNewItem() {
         String a;
         String b;
         String c;
-        String newItem;
-        a = title();
-        b = description();
-        c = dueDate();
-        newItem = a +": "+ b + " [" + c+"]";
+        String newItem = null;
+        try{
+            a = title();
+            b = description();
+            c = dueDate();
+            newItem = a +": "+ b + " [" + c+"]";
+        }catch (InvalidTitleException e){
+            System.out.println("Invalid entry for title dip shit\n");
+            System.out.println("title must be at least one character long");
+            System.out.println("Task list not created \n");
+        }
         return newItem;
     }
 
     private static String setTitle(){
-        String title;
-        title = input.nextLine();
-        return title;
+        Title = input.nextLine();
 
+        if(isTitleValid(Title)){
+
+        }else{
+           throw new InvalidTitleException("Na man try again you mess up my manz");
+        }
+        return Title;
     }
     private static String title(){
         String taskItemName;
-        System.out.println("\nplease enter a title for your task you have created");
+        System.out.println("\nplease enter a title for your task you wish to created"
+        + "\n---------------------------------------");
         taskItemName = setTitle();
         System.out.println(taskItemName + "\n");
         return taskItemName;
     }
 
 
-    private  static String setDiscription(){
-        String description;
-        description = input.nextLine();
-        return description;
+    private  static String setDiscription()  {
+
+        Description = input.nextLine();
+        return Description;
     }
 
     private  static String description(){
@@ -50,7 +68,7 @@ public class TaskItem {
         return descript;
     }
 
-    private  static String setDueDate(){
+    private  static String setDueDate() {
         String DueDaySet;
         System.out.print("please enter a due date: ");
         try {
@@ -63,14 +81,17 @@ public class TaskItem {
             return CorrectSatDate;
         }catch (DateTimeParseException e) {
             System.out.println("date is not in correct format\n");
-            dueDate();
-
+            System.out.println("Tasklist not created");
+            TaskList.taskListMenu();
+        }catch (NullPointerException e){
+            System.out.println("invalid input\n");
+            System.out.println("Tasklist not created");
+            TaskList.taskListMenu();
         }
-
         return CorrectSatDate;
     }
 
-    private static String dueDate(){
+    private static String dueDate()  {
         System.out.println("All new task require a due date(YYYY-MM-DD):");
         String dueDate;
         dueDate =  setDueDate();
@@ -78,7 +99,12 @@ public class TaskItem {
     }
 
     public static void createList() throws FileNotFoundException {
-        ArrayList<String> tasklist = new ArrayList<>();
-        TaskList.taskListOptions(tasklist);
+        TaskList.taskListMenu();
+    }
+
+}
+class InvalidTitleException extends IllegalArgumentException {
+    public InvalidTitleException(String msg) {
+        super(msg);
     }
 }

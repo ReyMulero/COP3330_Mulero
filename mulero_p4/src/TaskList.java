@@ -9,7 +9,7 @@ public class TaskList {
 
     private static ArrayList<String> tasklist = new ArrayList<>();
 
-    public static void loadList() throws FileNotFoundException {
+    public static void loadList()  {
         ArrayList<String> listFromTxt;
         System.out.print("enter the file name you wish to get: ");
         listFromTxt = GrabFile();
@@ -17,17 +17,15 @@ public class TaskList {
         taskListMenu();
     }
 
-    private static ArrayList<String> GrabFile() throws FileNotFoundException {
+    private static ArrayList<String> GrabFile()  {
         String fileName;
         fileName = in.nextLine();
-        ArrayList<String> tempListlocation = new ArrayList<String>();
+        ArrayList<String> tempListlocation = new ArrayList<>();
         try{
-            int i = 0;
             File file = new File(fileName);
             Scanner readFile = new Scanner(file);
             while(readFile.hasNextLine()){
                 tempListlocation.add(readFile.nextLine());
-                i++;
             }
         }catch (FileNotFoundException e){
             System.out.println("-------------\n" +
@@ -39,12 +37,7 @@ public class TaskList {
 
     }
 
-    public static void taskListOptions(ArrayList<String> tasklist) throws FileNotFoundException {
-        taskListMenu();
-
-    }
-
-    private static void taskListMenu() throws FileNotFoundException {
+    public static void taskListMenu()  {
         int optionpicked;
         do {
             System.out.println("---------task list option menu----------");
@@ -66,7 +59,7 @@ public class TaskList {
         }while (optionpicked != 8);
     }
 
-    private static void TaskToDo(int menuItemPicked) throws FileNotFoundException {
+    private static void TaskToDo(int menuItemPicked)  {
 
         switch (menuItemPicked){
 
@@ -95,7 +88,7 @@ public class TaskList {
                 break;
 
             case 7:
-                writeToFile(tasklist);
+                writeToFile();
 
                 break;
 
@@ -115,7 +108,6 @@ public class TaskList {
 
             if (data.startsWith("**")){
                 System.out.println(i +") "+data);
-
             }
             i++;
         }
@@ -149,7 +141,7 @@ public class TaskList {
         tasklist.set(markAsCompleted,completionMark + tasklist.get(markAsCompleted));
     }
 
-    private static void editItemList() {
+    private static void editItemList()  {
         int changeListLocation;
         int i = 0;
         String newListItemSet;
@@ -172,7 +164,7 @@ public class TaskList {
         System.out.println("---------------------------");
     }
 
-    private static void addItemToList() {
+    private static void addItemToList()  {
         tasklist.add( TaskItem.CreateNewItem());
     }
 
@@ -191,7 +183,7 @@ public class TaskList {
         }
     }
 
-    private static void writeToFile(ArrayList<String> tasklist){
+    private static void writeToFile(){
         String fileName;
         System.out.print("enter a file name:");
         fileName = in.nextLine();
