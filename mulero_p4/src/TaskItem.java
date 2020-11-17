@@ -17,14 +17,19 @@ public class TaskItem {
 
 
     private static boolean isTitleValid(String titlevalidation){
-       return Title.length()> 0;
-   }
+        return Title.length()> 0;
+    }
 
     public static String CreateNewItem() {
-        String a;
+        String newItem = new String();
+        newItem = getDateTryCatch(newItem);
+        return newItem;
+    }
+
+    private static String getDateTryCatch(String newItem) {
         String b;
         String c;
-        String newItem = null;
+        String a;
         try{
             a = title();
             b = description();
@@ -44,14 +49,14 @@ public class TaskItem {
         if(isTitleValid(Title)){
             System.out.println("");
         }else{
-           throw new InvalidTitleException("Na man try again you mess up my manz");
+            throw new InvalidTitleException("Na man try again you mess up my manz");
         }
         return Title;
     }
     private static String title(){
         String taskItemName;
         System.out.println("\nplease enter a title for your task you wish to created"
-        + "\n---------------------------------------");
+                + "\n---------------------------------------");
         taskItemName = setTitle();
         System.out.println(taskItemName + "\n");
         return taskItemName;
