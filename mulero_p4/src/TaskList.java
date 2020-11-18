@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class TaskList {
     private static final Scanner in = new Scanner(System.in);
 
-    private static ArrayList<String> tasklist = new ArrayList<>();
+   public static ArrayList<String> tasklist = new ArrayList<>();
 
     public static void loadList()  {
         ArrayList<String> listFromTxt;
@@ -173,7 +173,7 @@ public class TaskList {
     }
 
     public static void addItemToList()  {
-        tasklist.add( TaskItem.CreateNewItem());
+        TaskItem.CreateNewItem();
     }
 
     private static void viewTaskList() {

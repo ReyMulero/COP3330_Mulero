@@ -11,36 +11,30 @@ class InvalidTitleException extends IllegalArgumentException {
 
 public class TaskItem {
     private static String CorrectSatDate;
+    private static String Title;
+    private static String Description;
     private static final Scanner input = new Scanner(System.in);
-    private static String Title = null;
-    private static String Description = null;
-
 
     private static boolean isTitleValid(String titlevalidation){
-        return Title.length()> 0;
-    }
+       return Title.length()> 0;
+   }
 
     public static String CreateNewItem() {
-        String newItem = new String();
-        newItem = getDateTryCatch(newItem);
-        return newItem;
-    }
-
-    private static String getDateTryCatch(String newItem) {
+        String a;
         String b;
         String c;
-        String a;
+        String newItem;
         try{
             a = title();
             b = description();
             c = dueDate();
-            newItem = a +": "+ b + " [" + c+"]";
+           return newItem = a +": "+ b + " [" + c+"]";
         }catch (InvalidTitleException e){
             System.out.println("Invalid entry for title \n");
             System.out.println("title must be at least one character long");
             System.out.println("Task list not created \n");
         }
-        return newItem;
+        return null;
     }
 
     private static String setTitle(){
@@ -49,14 +43,14 @@ public class TaskItem {
         if(isTitleValid(Title)){
             System.out.println("");
         }else{
-            throw new InvalidTitleException("Na man try again you mess up my manz");
+           throw new InvalidTitleException("Na man try again you mess up my manz");
         }
         return Title;
     }
     private static String title(){
         String taskItemName;
         System.out.println("\nplease enter a title for your task you wish to created"
-                + "\n---------------------------------------");
+        + "\n---------------------------------------");
         taskItemName = setTitle();
         System.out.println(taskItemName + "\n");
         return taskItemName;
@@ -77,7 +71,7 @@ public class TaskItem {
         return descript;
     }
 
-    private  static String setDueDate() {
+    public  static String setDueDate() {
         String DueDaySet;
         System.out.print("please enter a due date: ");
         try {

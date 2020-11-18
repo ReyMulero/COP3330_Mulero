@@ -9,6 +9,7 @@ class TaskItemTest {
     }
    @Test
     public void creatingTaskItemFailsWithInvalidTitle(){}
+
     @Test
     public void creatingTaskItemSucceedsWithValidDueDate(){}
     @Test
