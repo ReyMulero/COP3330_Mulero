@@ -33,8 +33,9 @@ public class TaskItem {
             System.out.println("Invalid entry for title \n");
             System.out.println("title must be at least one character long");
             System.out.println("Task list not created \n");
+            return null;
         }
-        return null;
+
     }
 
     private static String setTitle(){
