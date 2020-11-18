@@ -154,9 +154,8 @@ public class TaskItem {
     public static void createList() throws FileNotFoundException {
         TaskList.taskListMenu();
     }
-
-
 }
+
 class InvalidTitleException extends IllegalArgumentException {
     public InvalidTitleException(String msg) {
         super(msg);
