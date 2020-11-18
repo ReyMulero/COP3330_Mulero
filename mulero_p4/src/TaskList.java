@@ -1,32 +1,38 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.DateTimeException;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TaskList {
+    private static String completionMark = "*****";
     private static final Scanner in = new Scanner(System.in);
 
-   private static ArrayList<String> tasklist = new ArrayList<>();
+   public static ArrayList<TaskItem> tasklist = new ArrayList<>();
 
     public static void loadList()  {
-        ArrayList<String> listFromTxt;
+        ArrayList<TaskItem> listFromTxt;
         System.out.print("enter the file name you wish to get: ");
         listFromTxt = GrabFile();
         tasklist = listFromTxt;
         taskListMenu();
     }
 
-    private static ArrayList<String> GrabFile()  {
+    private static ArrayList<TaskItem> GrabFile()  {
         String fileName;
         fileName = in.nextLine();
-        ArrayList<String> tempListlocation = new ArrayList<>();
+        ArrayList<TaskItem> tempListlocation = new ArrayList<>();
         try{
             File file = new File(fileName);
             Scanner readFile = new Scanner(file);
+            String data[];
+            TaskItem temp;
             while(readFile.hasNextLine()){
-                tempListlocation.add(readFile.nextLine());
+                data = readFile.nextLine().split(",",4);
+                temp = new TaskItem(data[0],data[1],data[2],Boolean.parseBoolean(data[3]));
+               tempListlocation.add(temp);
             }
         }catch (FileNotFoundException e){
             System.out.println("-------------\n" +
@@ -34,7 +40,8 @@ public class TaskList {
                     "------------------\n");
             //e.printStackTrace();
             loadList();
-        }return tempListlocation;
+        }//catch (DateTimeException)
+        return tempListlocation;
 
     }
 
@@ -110,49 +117,58 @@ public class TaskList {
     }
 
     private static void RemoveCompletionMarkFRomCompletedItem() {
-        int unmarkFromCompleted;
-        int i = 0;
-        for (String data:tasklist) {
-
-            if (data.startsWith("**")){
-                System.out.println(i +") "+data);
-            }
-            i++;
-        }
-
-        System.out.println("please choose an item from your list of item by list number to unmark from completed item");
-        System.out.println("--------------------------------");
-        unmarkFromCompleted= in.nextInt();
-        in.nextLine();
-        tasklist.set(unmarkFromCompleted, tasklist.get(unmarkFromCompleted).substring(5));
-    }
-
-    private static void markItemAsComplete() {
         int markAsCompleted;
         int i = 0;
         String completionMark = "*****";
 
         System.out.println("-------uncompleted task-----------");
-        for (String data:tasklist) {
+        for (TaskItem data:tasklist) {
 
-            if (!data.startsWith("**")){
-                System.out.println(i +") "+ data);
+            if (data.getcompletedTask()){
+                System.out.printf("%d) [%s] %s:  %s\n", i, data.getDueDate(), data.getTitle(), data.getDescription());
                 i++;
             }
-
         }
         System.out.println("--------------------------------------------");
+        System.out.println("please choose an item from your list of item by list number to unmark  from completed");
+        markAsCompleted = in.nextInt();
+        in.nextLine();
+        TaskItem data = tasklist.get(markAsCompleted);
+        if (data.getcompletedTask()){
+            data.setcomplpletedTask(false);
+        }
 
+    }
+
+    private static void markItemAsComplete() {
+        int markAsCompleted;
+        int i = 0;
+
+
+        System.out.println("-------uncompleted task-----------");
+        for (TaskItem data:tasklist) {
+
+           if (!data.getcompletedTask()){
+               System.out.printf("%d) [%s] %s:  %s\n", i, data.getDueDate(), data.getTitle(), data.getDescription());
+                i++;
+            }
+        }
+        System.out.println("--------------------------------------------");
         System.out.println("please choose an item from your list of item by list number to mark as completed");
         markAsCompleted = in.nextInt();
         in.nextLine();
-        tasklist.set(markAsCompleted,completionMark + tasklist.get(markAsCompleted));
+        TaskItem data = tasklist.get(markAsCompleted);
+        if (!data.getcompletedTask()){
+            data.setcomplpletedTask(true);
+        }
+
+
     }
 
     private static void editItemList()  {
         int changeListLocation;
         int i = 0;
-        String newListItemSet;
+        TaskItem newListItemSet;
         DisplayList(i);
         System.out.println("pleas enter the list location you would like to change");
         System.out.println("----------------------------\n");
@@ -173,7 +189,7 @@ public class TaskList {
     }
 
     public static void addItemToList()  {
-        String data = TaskItem.CreateNewItem();
+        TaskItem data = TaskItem.CreateNewItem();
         if (data == null);
         else tasklist.add(data);
         //tasklist.add(TaskItem.CreateNewItem());
@@ -187,8 +203,11 @@ public class TaskList {
     }
 
     private static void DisplayList(int i) {
-        for (String data:tasklist) {
-            System.out.println(i +") " + data);
+        for (TaskItem data:tasklist) {
+            if(TaskItem.completedTask == true){
+                System.out.print(completionMark);
+            }
+            System.out.printf("%d) [%s] %s:  %s\n", i, data.getDueDate(), data.getTitle(), data.getDescription());
             i++;
 
         }
@@ -199,8 +218,8 @@ public class TaskList {
         System.out.print("enter a file name:");
         fileName = in.nextLine();
         try( Formatter output = new Formatter(fileName)) {
-            for (String data : TaskList.tasklist) {
-                output.format("%s%n", data);
+            for (TaskItem data : TaskList.tasklist) {
+                output.format("%s,%s,%s,%s%n", data.getTitle(),data.getDescription(),data.getDueDate(),data.getcompletedTask());
             }
             System.out.println("file"+fileName + "hase been saved");
         }catch(FileNotFoundException e){

@@ -1,34 +1,78 @@
 import java.io.FileNotFoundException;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-class InvalidTitleException extends IllegalArgumentException {
-    public InvalidTitleException(String msg) {
-        super(msg);
-    }
-}
+
 
 public class TaskItem {
-    private static String CorrectSatDate;
-    private static String Title;
-    private static String Description;
+    public static String CorrectSetDate;
+    public static String Title;
+    public static String Description;
+    public static boolean completedTask;
     private static final Scanner input = new Scanner(System.in);
 
+
+
+    public TaskItem(String title, String description,String date,Boolean completedTask){
+        if (isTitleValid(title)){
+            Title = title;
+        }else{
+            throw new InvalidTitleException("shit this is haorible");
+        }
+        Description = description;
+
+        if (isFuckingDateValid(date)){
+            CorrectSetDate = date;
+        }else{
+            throw new DateTimeException("GOD DAMIT KARL Baskin!!!!!!!!");
+        }
+
+        this.completedTask = completedTask;
+    }
+
+    public boolean getcompletedTask(){
+        return this.completedTask;
+    }
+    public void setcomplpletedTask(boolean complete){
+        this.completedTask = complete;
+    }
+
     private static boolean isTitleValid(String titlevalidation){
-       return Title.length()> 0;
+       return titlevalidation.length()> 0;
    }
 
-    public static String CreateNewItem() {
+   private static boolean isFuckingDateValid(String FuckingDateValidation){
+       try {
+           LocalDate date = LocalDate.parse(FuckingDateValidation);
+
+           System.out.println(date + "\n");
+           CorrectSetDate = String.valueOf(date);
+           return true;
+       }catch (DateTimeParseException e) {
+           System.out.println("date is not in correct format\n");
+           System.out.println("Tasklist not created");
+          // TaskList.taskListMenu();
+           return false;
+       }catch (DateTimeException e){
+           System.out.println("invalid input\n");
+           System.out.println("Tasklist not created");
+           //TaskList.taskListMenu();
+           return false;
+       }
+   }
+
+    public static TaskItem CreateNewItem() {
         String a;
         String b;
         String c;
-        String newItem;
+        TaskItem newItem;
         try{
             a = title();
             b = description();
             c = dueDate();
-           return newItem = a +": "+ b + " [" + c+"]";
+           return newItem = new TaskItem(a, b, c,false);
         }catch (InvalidTitleException e){
             System.out.println("Invalid entry for title \n");
             System.out.println("title must be at least one character long");
@@ -37,6 +81,10 @@ public class TaskItem {
         }
 
     }
+
+     public String getTitle(){
+        return Title;
+     }
 
     private static String setTitle(){
         Title = input.nextLine();
@@ -58,11 +106,17 @@ public class TaskItem {
     }
 
 
+    public String getDescription() {
+        return Description;
+    }
+
     private  static String setDiscription()  {
 
         Description = input.nextLine();
         return Description;
     }
+
+
 
     private  static String description(){
         System.out.println("please enter a description for the task:");
@@ -72,27 +126,22 @@ public class TaskItem {
         return descript;
     }
 
-    public  static String setDueDate() {
+    public String getDueDate(){
+        return CorrectSetDate;
+    }
+
+
+    public static String setDueDate() {
         String DueDaySet;
         System.out.print("please enter a due date: ");
-        try {
-            DueDaySet = input.nextLine();
-
-            LocalDate date = LocalDate.parse(DueDaySet);
-
-            System.out.println(date + "\n");
-            CorrectSatDate = String.valueOf(date);
-            return CorrectSatDate;
-        }catch (DateTimeParseException e) {
-            System.out.println("date is not in correct format\n");
-            System.out.println("Tasklist not created");
-            TaskList.taskListMenu();
-        }catch (NullPointerException e){
-            System.out.println("invalid input\n");
-            System.out.println("Tasklist not created");
-            TaskList.taskListMenu();
+        DueDaySet = input.nextLine();
+        if (isFuckingDateValid(DueDaySet)){
+            return DueDaySet;
+        }else{
+            throw new DateTimeException("NO LINDA!!!!!!!!!!!!!!!");
         }
-        return CorrectSatDate;
+
+         //return CorrectSatDate;
     }
 
     private static String dueDate()  {
@@ -106,4 +155,10 @@ public class TaskItem {
         TaskList.taskListMenu();
     }
 
+
+}
+class InvalidTitleException extends IllegalArgumentException {
+    public InvalidTitleException(String msg) {
+        super(msg);
+    }
 }
