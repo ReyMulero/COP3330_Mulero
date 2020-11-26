@@ -45,7 +45,7 @@ public class TaskApp {
     }
 
     public static void mainMenu(){
-        System.out.println("---------------main menu------------------\n");
+        System.out.println("---------------Task List main menu------------------\n");
         System.out.println("1) create a new list\n" +
                 "2) load a created list\n" +
                 "3) exit program");
@@ -54,7 +54,7 @@ public class TaskApp {
         getMainMenuChoice();
     }
 
-    public static void main(String[] args) {
+    public static void TaskApp() {
         TaskApp app = new TaskApp();
         app.mainMenu();
     }

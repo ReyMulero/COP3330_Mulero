@@ -138,10 +138,17 @@ public class TaskItem {
     public  String setDueDate() {
         String DueDaySet;
         System.out.print("please enter a due date: ");
+        try{
         DueDaySet = input.nextLine();
         if (isFuckingDateValid(DueDaySet)){
             return DueDaySet;
         }else{
+            System.out.println("task item not created");
+           throw new DateTimeException("NO LINDA!!!!!!!!!!!!!!!");
+          }
+        }catch(DateTimeException e){
+            System.out.println("tasklist item not created");
+            TaskList.taskListMenu();
             throw new DateTimeException("NO LINDA!!!!!!!!!!!!!!!");
         }
     }
