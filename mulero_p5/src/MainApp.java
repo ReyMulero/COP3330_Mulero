@@ -21,7 +21,7 @@ public class MainApp {
                         TaskApp.TaskApp();
                         break;
                     case 2:
-                        ContactApp.ContactApp();
+                        ContactApp.App();
                         exitLoop = true;
                         break;
                     case 3:
@@ -46,7 +46,7 @@ public class MainApp {
 
     public static void mianMenuSelctionScreen(){
         System.out.println("1) Task List menu\n" +
-                           "2) Adress book menu\n" +
+                           "2) Contact List menu\n" +
                            "3) Exit");
         System.out.println("----------------------------" +
                        "--------------------------------");

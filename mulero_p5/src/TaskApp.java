@@ -29,8 +29,8 @@ public class TaskApp {
                         break;
                     case 3:
                         exitLoop = true;
-                        System.out.println("Thank you for using Task Manger v.1.0");
-                        System.exit(-1);
+                        System.out.println("Thank you for using Task Manger v.2.0");
+                        MainApp.mianMenuSelctionScreen();
                         break;
                     default:
                         System.out.println("please enter a valid response of a number from 1-3");
@@ -48,7 +48,7 @@ public class TaskApp {
         System.out.println("---------------Task List main menu------------------\n");
         System.out.println("1) create a new list\n" +
                 "2) load a created list\n" +
-                "3) exit program");
+                "3) return to main menu");
         System.out.println("\n------------------------------------------\n");
         System.out.println("please enter a number from 1-3");
         getMainMenuChoice();
