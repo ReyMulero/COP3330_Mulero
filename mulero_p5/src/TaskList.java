@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TaskList {
-    private static final String completionMark = "*****";
+    private  static String completionMark = "*****";
     private static final Scanner in = new Scanner(System.in);
 
     public static ArrayList<TaskItem> tasklist = new ArrayList<>();
@@ -119,7 +119,7 @@ public class TaskList {
         int i = 0;
         String completionMark = "*****";
 
-        System.out.println("-------uncompleted task-----------");
+        System.out.println("-------completed task-----------");
         for (TaskItem data:tasklist) {
 
             if (data.getcompletedTask()){
@@ -151,19 +151,22 @@ public class TaskList {
                 i++;
             }
         }
+
         System.out.println("--------------------------------------------");
         System.out.println("please choose an item from your list of item by list number to mark as completed");
         markAsCompleted = in.nextInt();
         in.nextLine();
-        TaskItem data = tasklist.get(markAsCompleted);
-        if (!data.getcompletedTask()){
-            data.setcomplpletedTask(true);
-        }
+        System.out.println(tasklist.get(markAsCompleted));
+       boolean changeBooleonToTrue = true;
+        tasklist.get(markAsCompleted).setcomplpletedTask(changeBooleonToTrue);
+       // if (data.getcompletedTask() != false){
+      //      data.setcomplpletedTask(true);
+       // }
 
 
     }
 
-    private static void editItemList()  {
+    private  static void editItemList()  {
         int changeListLocation;
         int i = 0;
         TaskItem newListItemSet;
@@ -203,11 +206,16 @@ public class TaskList {
 
     private static void DisplayList(int i) {
         for (TaskItem data:tasklist) {
-            if(TaskItem.completedTask == true){
-                System.out.print(completionMark);
+
+            if(data.getcompletedTask() == true){
+                System.out.printf("%d) %S [%s] %s: %s\n", i,completionMark,data.getDueDate(), data.getTitle(), data.getDescription());
+                i++;
             }
-            System.out.printf("%d) [%s] %s: %s\n", i, data.getDueDate(), data.getTitle(), data.getDescription());
-            i++;
+            else{
+                System.out.printf("%d) [%s] %s: %s\n", i,data.getDueDate(), data.getTitle(), data.getDescription());
+                i++;
+            }
+
         }
 
     }

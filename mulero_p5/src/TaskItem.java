@@ -9,7 +9,7 @@ public class TaskItem {
     public  String CorrectSetDate;
     public  String Title;
     public String Description;
-    public static boolean completedTask;
+    public boolean completedTask;
     private static final Scanner input = new Scanner(System.in);
 
 
@@ -31,10 +31,10 @@ public class TaskItem {
         this.completedTask = completedTask;
     }
 
-//    @Override
-//    public String toString() {
-//        return (CorrectSetDate+ " "+Title+": "+ Description);
-//    }
+    @Override
+    public String toString() {
+        return (CorrectSetDate+ " "+Title+": "+ Description);
+    }
 
     public boolean getcompletedTask(){
         return this.completedTask;
@@ -56,12 +56,12 @@ public class TaskItem {
             return true;
         }catch (DateTimeParseException e) {
             System.out.println("date is not in correct format\n");
-            System.out.println("Tasklist not created");
+           // System.out.println("Tasklist not created");
             // TaskList.taskListMenu();
             return false;
         }catch (DateTimeException e){
             System.out.println("invalid input\n");
-            System.out.println("Tasklist not created");
+           // System.out.println("Tasklist not created");
             //TaskList.taskListMenu();
             return false;
         }
@@ -80,7 +80,7 @@ public class TaskItem {
         }catch (InvalidTitleException e){
             System.out.println("Invalid entry for title \n");
             System.out.println("title must be at least one character long");
-            System.out.println("Task list not created \n");
+
             return null;
         }
     }
@@ -143,7 +143,7 @@ public class TaskItem {
         if (isFuckingDateValid(DueDaySet)){
             return DueDaySet;
         }else{
-            System.out.println("task item not created");
+          //  System.out.println("task item not created");
            throw new DateTimeException("NO LINDA!!!!!!!!!!!!!!!");
           }
         }catch(DateTimeException e){
