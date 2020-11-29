@@ -6,31 +6,30 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
     public class ContactList {
-        private  static String completionMark = "*****";
         private static final Scanner in = new Scanner(System.in);
 
-        public static ArrayList<TaskItem> tasklist = new ArrayList<>();
+        public static ArrayList<ContactItem> contactList = new ArrayList<>();
 
         public static void loadList()  {
-            ArrayList<TaskItem> listFromTxt;
+            ArrayList<ContactItem> listFromTxt;
             System.out.print("enter the file name you wish to get: ");
             listFromTxt = GrabFile();
-            tasklist = listFromTxt;
-            taskListMenu();
+            contactList = listFromTxt;
+            ContactListMenu();
         }
 
-        private static ArrayList<TaskItem> GrabFile()  {
+        private static ArrayList<ContactItem> GrabFile()  {
             String fileName;
             fileName = in.nextLine();
-            ArrayList<TaskItem> tempListlocation = new ArrayList<>();
+            ArrayList<ContactItem> tempListlocation = new ArrayList<>();
             try{
                 File file = new File(fileName);
                 Scanner readFile = new Scanner(file);
                 String data[];
-                TaskItem temp;
+                ContactItem temp;
                 while(readFile.hasNextLine()){
                     data = readFile.nextLine().split(",",4);
-                    temp = new TaskItem(data[0],data[1],data[2],Boolean.parseBoolean(data[3]));
+                    temp = new ContactItem(data[0],data[1],data[2],data[3]);
                     tempListlocation.add(temp);
                 }
             }catch (FileNotFoundException e){
@@ -43,7 +42,7 @@ import java.util.Scanner;
             return tempListlocation;//catch (DateTimeException)
         }
 
-        public static void taskListMenu()  {
+        public static void ContactListMenu()  {
             int optionpicked;
             try {
                 do {
@@ -65,7 +64,7 @@ import java.util.Scanner;
             }catch (InputMismatchException e){
                 System.out.println("you enter an invalid response please enter a number from 1-8");
                 in.next();
-                taskListMenu();
+                ContactListMenu();
             }
 
         }
@@ -75,7 +74,7 @@ import java.util.Scanner;
             switch (menuItemPicked){
 
                 case 1:
-                    viewTaskList();
+                    viewContactList();
                     break;
                 case 2:
                     addItemToList();
@@ -96,9 +95,8 @@ import java.util.Scanner;
                     break;
 
                 default:
-
                     System.out.println("you have decide to go back to the main menu\n\n");
-                    tasklist.clear();
+                    contactList.clear();
                     TaskApp.mainMenu();
 
             }
@@ -108,14 +106,14 @@ import java.util.Scanner;
         private  static void editItemList()  {
             int changeListLocation;
             int i = 0;
-            TaskItem newListItemSet;
+            ContactItem newListItemSet;
             DisplayList(i);
             System.out.println("pleas enter the list location you would like to change");
             System.out.println("----------------------------\n");
             changeListLocation = in.nextInt();
             in.nextLine();
-            newListItemSet = TaskItem.CreateNewItem();
-            tasklist.set(changeListLocation,newListItemSet);
+            newListItemSet = ContactItem.CreateNewItem();
+            contactList.set(changeListLocation,newListItemSet);
         }
 
         private static void RemoveItmeFromList() {
@@ -124,19 +122,19 @@ import java.util.Scanner;
             DisplayList(i);
             System.out.print("please enter the number that for the slot that you wish to remove from the list: \n");
             itemToRemove = in.nextInt();
-            tasklist.remove(itemToRemove);
+            contactList.remove(itemToRemove);
             System.out.println("---------------------------");
         }
 
         public static void addItemToList()  {
-            TaskItem data = TaskItem.CreateNewItem();
+            ContactItem data = ContactItem.CreateNewItem();
             if (data != null) {
-                tasklist.add(data);
+                contactList.add(data);
             }
-            //tasklist.add(TaskItem.CreateNewItem());
+            //ContactList.add(ContactItem.CreateNewItem());
         }
 
-        private static void viewTaskList() {
+        private static void viewContactList() {
             int i = 0;
             System.out.println("current item in the list\n");
             DisplayList(i);
@@ -144,19 +142,9 @@ import java.util.Scanner;
         }
 
         private static void DisplayList(int i) {
-            for (TaskItem data:tasklist) {
-
-                if(data.getcompletedTask() == true){
-                    System.out.printf("%d) %S [%s] %s: %s\n", i,completionMark,data.getDueDate(), data.getTitle(), data.getDescription());
-                    i++;
-                }
-                else{
-                    System.out.printf("%d) [%s] %s: %s\n", i,data.getDueDate(), data.getTitle(), data.getDescription());
-                    i++;
-                }
-
+            for (ContactItem data : contactList) {
+                System.out.printf("%d) %s %s :%s (%s)\n", i ,data.getFirstName(),data.getLastName(),data.getEmail(),data.getPhonenumber());
             }
-
         }
 
         private static void writeToFile(){
@@ -164,8 +152,8 @@ import java.util.Scanner;
             System.out.print("enter a file name:");
             fileName = in.nextLine();
             try( Formatter output = new Formatter(fileName)) {
-                for (TaskItem data : TaskList.tasklist) {
-                    output.format("%s,%s,%s,%s%n", data.getTitle(),data.getDescription(),data.getDueDate(),data.getcompletedTask());
+                for (ContactItem data : ContactList.contactList) {
+                    output.format("%s,%s %s :%s%n", data.getFirstName(),data.getLastName(),data.getEmail(),data.getPhonenumber());
                 }
                 System.out.println("file"+fileName + "hase been saved");
             }catch(FileNotFoundException e){

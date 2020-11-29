@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 
 public class TaskItem {
-    public  String CorrectSetDate;
-    public  String Title;
+    public String CorrectSetDate;
+    public String Title;
     public String Description;
     public boolean completedTask;
     private static final Scanner input = new Scanner(System.in);

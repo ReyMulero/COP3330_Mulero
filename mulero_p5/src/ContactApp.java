@@ -20,11 +20,11 @@ import java.util.Scanner;
                         case 1:
                             System.out.println("you have created a new list\n\n");
                             exitLoop = true;
-                            TaskItem.createList();
+                            ContactItem.createList();
                             break;
                         case 2:
                             System.out.println("you have choose to look at a your previous created list");
-                            TaskList.loadList();
+                            ContactList.loadList();
                             exitLoop = true;
                             break;
                         case 3:
