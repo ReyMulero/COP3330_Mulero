@@ -195,7 +195,6 @@ public class ContactItem {
         }catch (InvalidNameException e){
 //            System.out.println("Invalid entry for title \n");
 //            System.out.println("title must be at least one character long");
-
         } return null;
     }
 }

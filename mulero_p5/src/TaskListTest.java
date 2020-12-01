@@ -7,7 +7,9 @@ class TaskListTest {
     @Test
     public void addingTaskItemsIncreasesSize(){}
     @Test
-    public void completingTaskItemChangesStatus(){}
+    public void completingTaskItemChangesStatus(){
+
+    }
     @Test
     public void completingTaskItemFailsWithInvalidIndex(){}
     @Test
