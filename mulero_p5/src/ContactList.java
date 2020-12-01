@@ -144,6 +144,7 @@ import java.util.Scanner;
         private static void DisplayList(int i) {
             for (ContactItem data : contactList) {
                 System.out.printf("%d) %s %s :%s (%s)\n", i ,data.getFirstName(),data.getLastName(),data.getEmail(),data.getPhonenumber());
+                i++;
             }
         }
 
@@ -153,13 +154,12 @@ import java.util.Scanner;
             fileName = in.nextLine();
             try( Formatter output = new Formatter(fileName)) {
                 for (ContactItem data : ContactList.contactList) {
-                    output.format("%s,%s %s :%s%n", data.getFirstName(),data.getLastName(),data.getEmail(),data.getPhonenumber());
+                    output.format("%s,%s,%s,%s%n", data.getFirstName(),data.getLastName(),data.getEmail(),data.getPhonenumber());
                 }
                 System.out.println("file"+fileName + "hase been saved");
             }catch(FileNotFoundException e){
                 System.out.println("no file was found");
             }
         }
-
     }
 

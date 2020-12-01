@@ -1,37 +1,39 @@
-import javax.naming.InvalidNameException;
 import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ContactItem {
 
     public String FirstName;
     public String LastName;
-    public String Email;
+    public String EmailAdress;
     public String phonenumber;
     private static final Scanner input = new Scanner(System.in);
 
+    public  static void createList() throws FileNotFoundException {
+        ContactList.ContactListMenu();
+    }
 
-
-    public ContactItem(String Fstname, String LstName, String Email, String phoneNumber){
+    public ContactItem(String Fstname, String LstName, String Email, String PhoneNumber){
         if (isNameValid(Fstname)){
-            Fstname = Fstname;
+            FirstName = Fstname;
         }else{
-            throw new InvalidTitleException("you don't have a First name You lie (-.-)???????");
+            throw new InvalidNameException("you don't have a First name You lie (-.-)???????");
         }
         if (isNameValid(LstName)){
-            LstName = LstName;
+            LastName = LstName;
         }else{
-            throw new InvalidTitleException("why you nio have last name(-.-)??????? Get them there sus!!!!");
+            throw new InvalidNameException("why you nio have last name(-.-)??????? Get them there sus!!!!");
         }
         if (isEmailValid(Email)){
-            Email = Email;
+            EmailAdress = Email;
         }else{
-            throw new InvalidTitleException("You lie everyone has an email these days");
+            throw new InvalidNameException("You lie everyone has an email these days");
         }
-        if (isNameValid(LstName)){
-            LstName = LstName;
+        if (isPhonenumberValid(PhoneNumber)){
+            phonenumber = PhoneNumber;
         }else{
-            throw new InvalidTitleException("why you nio have last name(-.-)??????? Get them there sus!!!!");
+            throw new InvalidTitleException("why you no have last name(-.-)??????? Get them there sus!!!!");
         }
 
 
@@ -50,7 +52,12 @@ public class ContactItem {
         return PhoneNumberValidation.length() >= 10;
     }
 
-
+    private static String firstName(){
+        ContactItem C = new ContactItem("a", "b", "c", "123-456-7890");
+        System.out.println("please enter a first Name must be at leat 1 character long:");
+        C.setFirstName();
+        return C.getFirstName();
+    }
 
     public String getFirstName() {
         return FirstName;
@@ -62,9 +69,19 @@ public class ContactItem {
         if(isNameValid(FirstName)){
             System.out.println("");
         }else{
+            FirstName = null;
             throw new InvalidNameException("Na man try again you mess up my manz");
         }
         return FirstName;
+    }
+
+
+
+    private static String lastName(){
+        ContactItem C = new ContactItem("a", "b", "c", "123-456-7890");
+        System.out.println("please enter a last Name must be at leat 1 character long:");
+        C.setLastName();
+        return C.getLastName();
     }
 
     public String getLastName() {
@@ -77,24 +94,46 @@ public class ContactItem {
         if(isNameValid(LastName)){
             System.out.println("");
         }else{
+            LastName = null;
             throw new InvalidNameException("Na man try again you mess up my manz");
         }
         return LastName;
     }
 
+
+
+    private static String emailAdress(){
+        ContactItem C = new ContactItem("a", "b", "c", "123-456-7890");
+        System.out.println("please enter your email adress:");
+        C.setEmail();
+        return C.getEmail();
+    }
+
     public String getEmail() {
-        return Email;
+        return EmailAdress;
     }
 
     public String setEmail() {
-        Email = input.nextLine();
+        EmailAdress = input.nextLine();
 
-        if(isEmailValid(Email)){
+        if(isEmailValid(EmailAdress)){
             System.out.println("");
         }else{
-            throw new InvalidNameException("How am i supposed to email you those secret kraby patty recipenow?");
+            EmailAdress = null;
+            throw new InvalidNameException("How am i supposed to email you the secret kraby patty recipe now?");
+
         }
-        return Email;
+        return EmailAdress;
+    }
+
+
+
+    private static String phoneNumber(){
+        ContactItem C = new ContactItem("a", "b", "c", "123-456-7890");
+        System.out.println("please enter a 10 digit phone number in the format of ( 1234567890 )");
+        C.setPhonenumber();
+        return C.getPhonenumber();
+
     }
 
     public String getPhonenumber() {
@@ -102,11 +141,26 @@ public class ContactItem {
     }
 
     public String setPhonenumber() {
-        phonenumber = input.nextLine();
+        int tempNumberToString;
+        String tempPhoneNumber;
+        String a,b,c;
+        try{
+            tempNumberToString = input.nextInt();
+            tempPhoneNumber= Integer.toString(tempNumberToString);
+            a = tempPhoneNumber.substring(0,3);
+            b = tempPhoneNumber.substring(3,6);
+            c = tempPhoneNumber.substring(6,10);
+            phonenumber = (a+"-"+b+"-"+c);
+
+
+        }catch(InputMismatchException e){
+            System.out.println("you have enter an invalid response for your phone number");
+        }
 
         if(isPhonenumberValid(phonenumber)){
             System.out.println("");
         }else{
+            phonenumber = null;
             throw new InvalidTitleException("How am i supposed to call you back to keep you up to date manz");
         }
         return phonenumber;
@@ -124,50 +178,21 @@ public class ContactItem {
             b = lastName();
             c = emailAdress();
             d = phoneNumber();
-            return new ContactItem(a, b, c,d);
+            if(new ContactItem(a, b, c,d) != null){
+                return new ContactItem(a,b,c,d);
+            }
+            else{
+                System.out.println("contact list item not created");
+            }
         }catch (InvalidNameException e){
-            System.out.println("Invalid entry for title \n");
-            System.out.println("title must be at least one character long");
-            return null;
-        }
-    }
+//            System.out.println("Invalid entry for title \n");
+//            System.out.println("title must be at least one character long");
 
-
-
-    private static String firstName(){
-        ContactItem C = new ContactItem("a", "b", "c", "123-456-7890");
-        System.out.println("please enter a first Name must be at leat 1 character long:");
-        C.setFirstName();
-        return C.getFirstName();
-    }
-
-    private static String lastName(){
-        ContactItem C = new ContactItem("a", "b", "c", "123-456-7890");
-        System.out.println("please enter a last Name must be at leat 1 character long:");
-        C.setLastName();
-        return C.getLastName();
-    }
-
-    private static String emailAdress(){
-        ContactItem C = new ContactItem("a", "b", "c", "123-456-7890");
-        System.out.println("please enter your email adress:");
-        C.setEmail();
-        return C.getEmail();
-    }
-
-    private static String phoneNumber(){
-        ContactItem C = new ContactItem("a", "b", "c", "123-456-7890");
-        System.out.println("please enter a 10 digit phone number in the format of ( 123-456-7890 )");
-        C.setPhonenumber();
-        return C.getPhonenumber();
-
-    }
-    public  static void createList() throws FileNotFoundException {
-        ContactList.ContactListMenu();
+        } return null;
     }
 }
-class InvalidnameException extends IllegalArgumentException {
-    public InvalidnameException(String msg) {
+class InvalidNameException extends IllegalArgumentException {
+    public InvalidNameException(String msg) {
         super(msg);
     }
 }
