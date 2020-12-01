@@ -54,8 +54,6 @@ public class MainApp {
     }
 
 
-
-
     public static void main(String[] args) {
         System.out.println("----------------Welcome to Work Flow Manger----------------\n");
         System.out.println("please choose an option from are menu below\n" +
@@ -63,4 +61,5 @@ public class MainApp {
                            "\n------------------------------------------------------------");
         mianMenuSelctionScreen();
     }
+
 }

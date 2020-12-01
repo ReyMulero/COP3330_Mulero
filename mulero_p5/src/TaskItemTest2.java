@@ -1,29 +1,23 @@
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
 import java.time.DateTimeException;
 
-class TaskItemTest {
-    @Test
-    public void creatingTaskItemFailsWithInvalidDueDate(){
-        assertThrows(DateTimeException.class,() -> new TaskItem("rey", "", "2020-13-11",false));
-    }
+class TaskItemTest2 {
     @Test
     public void creatingTaskItemFailsWithInvalidTitle(){
         assertThrows(DateTimeException.class,() -> new TaskItem("rey", "", "2020-13-11",false));
     }
 
+
     @Test
-    public void creatingTaskItemSucceedsWithValidDueDate(){
-        assertDoesNotThrow(()-> new TaskItem("a", "", "2020-12-11",false));
+    public void creatingTaskItemFailsWithInvalidDueDate(){
+        assertThrows(DateTimeException.class,() -> new TaskItem("rey", "", "2020-13-11",false));
     }
 
     @Test
     public void creatingTaskItemSucceedsWithValidTitle(){
-        assertThrows(DateTimeException.class,() -> new TaskItem("rey", "", "2020-13-11",false));
-
-    }
-    @Test
-    public void settingTaskItemDueDateFailsWithInvalidDate(){
         assertThrows(DateTimeException.class,() -> new TaskItem("rey", "", "2020-13-11",false));
 
     }
@@ -42,5 +36,10 @@ class TaskItemTest {
         TaskItem t = new TaskItem("rey", "", "1111-12-13", false);
         assertEquals("rey", t.getTitle());
     }
+    @Test
+    public void creatingTaskItemSucceedsWithValidDueDate(){
 
+        //assertDoesNotThrow();
+         assertDoesNotThrow(()-> new TaskItem("a", "", "2020-12-11",false));
+    }
 }

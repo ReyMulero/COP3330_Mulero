@@ -65,13 +65,16 @@ public class ContactItem {
 
     public String setFirstName() {
         FirstName = input.nextLine();
-
+    try{
         if(isNameValid(FirstName)){
             System.out.println("");
         }else{
             FirstName = null;
-            throw new InvalidNameException("Na man try again you mess up my manz");
         }
+    }catch(InvalidNameException e){
+        throw new InvalidNameException("Na man try again you mess up my manz");
+        }
+
         return FirstName;
     }
 
@@ -90,15 +93,18 @@ public class ContactItem {
 
     public String setLastName() {
         LastName = input.nextLine();
-
-        if(isNameValid(LastName)){
-            System.out.println("");
-        }else{
-            LastName = null;
-            throw new InvalidNameException("Na man try again you mess up my manz");
+        try {
+            if (isNameValid(LastName)) {
+                System.out.println("");
+            } else {
+                LastName = null;
+            }
+        }catch(InvalidNameException e){
+                throw new InvalidNameException("Na man try again you mess up my manz");
+            }
+            return LastName;
         }
-        return LastName;
-    }
+
 
 
 
@@ -115,14 +121,14 @@ public class ContactItem {
 
     public String setEmail() {
         EmailAdress = input.nextLine();
-
-        if(isEmailValid(EmailAdress)){
+        try{
+            if(isEmailValid(EmailAdress)){
             System.out.println("");
-        }else{
+            }else{
             EmailAdress = null;
-            throw new InvalidNameException("How am i supposed to email you the secret kraby patty recipe now?");
+            }
+        }catch(InvalidNameException e){throw new InvalidNameException("How am i supposed to email you the secret kraby patty recipe now?");}
 
-        }
         return EmailAdress;
     }
 
@@ -151,8 +157,6 @@ public class ContactItem {
             b = tempPhoneNumber.substring(3,6);
             c = tempPhoneNumber.substring(6,10);
             phonenumber = (a+"-"+b+"-"+c);
-
-
         }catch(InputMismatchException e){
             System.out.println("you have enter an invalid response for your phone number");
         }
@@ -165,8 +169,7 @@ public class ContactItem {
         }
         return phonenumber;
     }
-
-
+    
     public static ContactItem CreateNewItem() {
         String a;
         String b;
@@ -178,7 +181,7 @@ public class ContactItem {
             b = lastName();
             c = emailAdress();
             d = phoneNumber();
-            if(new ContactItem(a, b, c,d) != null){
+            if((a != null || b != null || c != null || d != null)){
                 return new ContactItem(a,b,c,d);
             }
             else{
