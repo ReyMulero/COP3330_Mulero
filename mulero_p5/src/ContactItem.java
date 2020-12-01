@@ -15,27 +15,30 @@ public class ContactItem {
     }
 
     public ContactItem(String Fstname, String LstName, String Email, String PhoneNumber){
-        if (isNameValid(Fstname)){
-            FirstName = Fstname;
-        }else{
-            throw new InvalidNameException("you don't have a First name You lie (-.-)???????");
-        }
-        if (isNameValid(LstName)){
-            LastName = LstName;
-        }else{
-            throw new InvalidNameException("why you nio have last name(-.-)??????? Get them there sus!!!!");
-        }
-        if (isEmailValid(Email)){
-            EmailAdress = Email;
-        }else{
-            throw new InvalidNameException("You lie everyone has an email these days");
-        }
-        if (isPhonenumberValid(PhoneNumber)){
-            phonenumber = PhoneNumber;
-        }else{
-            throw new InvalidTitleException("why you no have last name(-.-)??????? Get them there sus!!!!");
-        }
-
+       try {
+           if (isNameValid(Fstname)) {
+               FirstName = Fstname;
+           } else {
+               throw new InvalidNameException("you don't have a First name You lie (-.-)???????");
+           }
+           if (isNameValid(LstName)) {
+               LastName = LstName;
+           } else {
+               throw new InvalidNameException("why you no have last name(-.-)??????? Get them there sus!!!!");
+           }
+           if (isEmailValid(Email)) {
+               EmailAdress = Email;
+           } else {
+               throw new InvalidNameException("You lie everyone has an email these days");
+           }
+           if (isPhonenumberValid(PhoneNumber)) {
+               phonenumber = PhoneNumber;
+           } else {
+               throw new InvalidTitleException("why you no have last name(-.-)??????? Get them there sus!!!!");
+           }
+       }catch (NullPointerException e){
+           System.out.println("no info was there it was empty");
+       }
 
 
     }
@@ -72,7 +75,7 @@ public class ContactItem {
             FirstName = null;
         }
     }catch(InvalidNameException e){
-        throw new InvalidNameException("Na man try again you mess up my manz");
+        throw new InvalidNameException("Nah man try again you mess up my manz");
         }
 
         return FirstName;
@@ -82,7 +85,7 @@ public class ContactItem {
 
     private static String lastName(){
         ContactItem C = new ContactItem("a", "b", "c", "123-456-7890");
-        System.out.println("please enter a last Name must be at leat 1 character long:");
+        System.out.println("please enter a last Name must be at least 1 character long:");
         C.setLastName();
         return C.getLastName();
     }
@@ -100,7 +103,7 @@ public class ContactItem {
                 LastName = null;
             }
         }catch(InvalidNameException e){
-                throw new InvalidNameException("Na man try again you mess up my manz");
+                throw new InvalidNameException("Nah man try again you mess up my manz");
             }
             return LastName;
         }
@@ -110,7 +113,7 @@ public class ContactItem {
 
     private static String emailAdress(){
         ContactItem C = new ContactItem("a", "b", "c", "123-456-7890");
-        System.out.println("please enter your email adress:");
+        System.out.println("please enter your email address:");
         C.setEmail();
         return C.getEmail();
     }
@@ -127,7 +130,7 @@ public class ContactItem {
             }else{
             EmailAdress = null;
             }
-        }catch(InvalidNameException e){throw new InvalidNameException("How am i supposed to email you the secret kraby patty recipe now?");}
+        }catch(InvalidNameException e){throw new InvalidNameException("How am i supposed to email you the secret Kraby patty recipe now?");}
 
         return EmailAdress;
     }
@@ -147,18 +150,20 @@ public class ContactItem {
     }
 
     public String setPhonenumber() {
-        int tempNumberToString;
         String tempPhoneNumber;
         String a,b,c;
         try{
-            tempNumberToString = input.nextInt();
-            tempPhoneNumber= Integer.toString(tempNumberToString);
-            a = tempPhoneNumber.substring(0,3);
-            b = tempPhoneNumber.substring(3,6);
-            c = tempPhoneNumber.substring(6,10);
-            phonenumber = (a+"-"+b+"-"+c);
+            tempPhoneNumber = input.nextLine();
+            if(tempPhoneNumber.length() >0) {
+                a = tempPhoneNumber.substring(0, 3);
+                b = tempPhoneNumber.substring(3, 6);
+                c = tempPhoneNumber.substring(6, 10);
+                phonenumber = (a + "-" + b + "-" + c);
+            }
         }catch(InputMismatchException e){
             System.out.println("you have enter an invalid response for your phone number");
+        }catch (NullPointerException e){
+
         }
 
         if(isPhonenumberValid(phonenumber)){
