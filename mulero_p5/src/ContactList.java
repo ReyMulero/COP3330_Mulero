@@ -28,7 +28,7 @@ import java.util.Scanner;
                 String data[];
                 ContactItem temp;
                 while(readFile.hasNextLine()){
-                    data = readFile.nextLine().split(",",4);
+                    data = readFile.nextLine().split(" ",4);
                     temp = new ContactItem(data[0],data[1],data[2],data[3]);
                     tempListlocation.add(temp);
                 }
@@ -154,7 +154,7 @@ import java.util.Scanner;
             fileName = in.nextLine();
             try( Formatter output = new Formatter(fileName)) {
                 for (ContactItem data : ContactList.contactList) {
-                    output.format("%s,%s,%s,%s%n", data.getFirstName(),data.getLastName(),data.getEmail(),data.getPhonenumber());
+                    output.format("%s %s %s %s%n", data.getFirstName(),data.getLastName(),data.getEmail(),data.getPhonenumber());
                 }
                 System.out.println("file"+fileName + "hase been saved");
             }catch(FileNotFoundException e){
