@@ -1,14 +1,14 @@
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 
-
 class TaskListTest {
-
+TaskList t = new TaskList();
     @Test
-    public void addingTaskItemsIncreasesSize(){}
+    public void addingTaskItemsIncreasesSize(){
+    }
     @Test
     public void completingTaskItemChangesStatus(){
-
     }
     @Test
     public void completingTaskItemFailsWithInvalidIndex(){}

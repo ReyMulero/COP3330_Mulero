@@ -1,42 +1,35 @@
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import java.lang.annotation.Retention;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class ContactItemTest {
-    ContactItem ft = new ContactItem("Rey", "m", "rm2@gmail.com", "1234567890");
-
     @Test
-    creationFailsWithAllBlankValues(){
-    assertThrows(InvalidNameException.class,() -> new ContactItem("", "", "", ""));
-    assertEquals(null, null);
+    public void creationFailsWithAllBlankValues(){
+        assertEquals();
     }
     @Test
-    creationSucceedsWithBlankEmail(){
-
+    public void creationSucceedsWithBlankEmail(){
     }
     @Test
-    creationSucceedsWithBlankFirstName(){}
+    public void creationSucceedsWithBlankFirstName(){}
     @Test
-    creationSucceedsWithBlankLastName(){}
+    public void creationSucceedsWithBlankLastName(){}
     @Test
-    creationSucceedsWithBlankPhone(){}
+    public void creationSucceedsWithBlankPhone(){}
     @Test
-    creationSucceedsWithNonBlankValues(){]}
+    public void creationSucceedsWithNonBlankValues(){}
     @Test
-    editingFailsWithAllBlankValues(){}
+    public void editingFailsWithAllBlankValues(){}
     @Test
-    editingSucceedsWithBlankEmail(){}
+    public void editingSucceedsWithBlankEmail(){}
     @Test
-    editingSucceedsWithBlankFirstName(){}
+    public void editingSucceedsWithBlankFirstName(){}
     @Test
-    editingSucceedsWithBlankLastName(){}
+    public void editingSucceedsWithBlankLastName(){}
     @Test
-    editingSucceedsWithBlankPhone(){}
+    public void editingSucceedsWithBlankPhone(){}
     @Test
-    editingSucceedsWithNonBlankValues(){}
+    public void editingSucceedsWithNonBlankValues(){}
     @Test
-    testToString(){}
+    public void testToString(){}
 
 }
